@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>my_moveit_config</name>
+  <name>real_moveit_config</name>
   <version>0.3.0</version>
   <description>
      An automatically generated package with all the configuration and launch files for using the name with the MoveIt Motion Planning Framework
@@ -46,8 +46,7 @@
 
 
   <exec_depend>sim_real_config</exec_depend>
-
-
+  
   <export>
       <build_type>ament_cmake</build_type>
   </export>

@@ -9,7 +9,7 @@ from launch_ros.actions import Node
 def generate_launch_description():
 
     config_pkg = get_package_share_directory('sim_real_config')
-    param_config = pthJoin(config_pkg, 'config', 'sim.yaml')
+    param_config = pthJoin(config_pkg, 'config', 'real.yaml')
 
     moveit_config = MoveItConfigsBuilder("name", package_name="my_moveit_config").to_moveit_configs()
     
@@ -22,7 +22,7 @@ def generate_launch_description():
             moveit_config.to_dict(),
             {"trajectory_execution.allowed_execution_duration_scaling": 2.0,},
             {"publish_robot_description_semantic": True},
-            {"use_sim_time": True},
+            {"use_sim_time": False},
         ],
     )
 

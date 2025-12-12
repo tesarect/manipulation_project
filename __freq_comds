@@ -6,6 +6,58 @@ ros2 topic echo /joint_states --once
 
 colcon build --packages-select my_moveit_config
 
+                S I M
 source ~/ros2_ws/install/setup.bash && ros2 launch my_moveit_config move_group.launch.py
-
 source ~/ros2_ws/install/setup.bash && ros2 launch my_moveit_config moveit_rviz.launch.py
+
+                R E A L
+source ~/ros2_ws/install/setup.bash && ros2 launch real_moveit_config move_group.launch.py
+source ~/ros2_ws/install/setup.bash && ros2 launch real_moveit_config moveit_rviz.launch.py
+
+
+------------------------------------------------------------------
+On REAL:
+user:~$ ros2 control list_controllers
+joint_state_broadcaster[joint_state_broadcaster/JointStateBroadcaster] active
+joint_trajectory_controller[joint_trajectory_controller/JointTrajectoryController] inactive
+io_and_status_controller[ur_controllers/GPIOController] active
+forward_velocity_controller[velocity_controllers/JointGroupVelocityController] inactive
+speed_scaling_state_broadcaster[ur_controllers/SpeedScalingStateBroadcaster] active
+forward_position_controller[position_controllers/JointGroupPositionController] inactive
+force_torque_sensor_broadcaster[force_torque_sensor_broadcaster/ForceTorqueSensorBroadcaster] active
+force_mode_controller[ur_controllers/ForceModeController] inactive
+tcp_pose_broadcaster[pose_broadcaster/PoseBroadcaster] active
+passthrough_trajectory_controller[ur_controllers/PassthroughTrajectoryController] inactive
+freedrive_mode_controller[ur_controllers/FreedriveModeController] inactive
+ur_configuration_controller[ur_controllers/URConfigurationController] active
+tool_contact_controller[ur_controllers/ToolContactController] inactive
+scaled_joint_trajectory_controller[ur_controllers/ScaledJointTrajectoryController] active
+
+user:~$ ros2 node list
+/controller_manager
+/controller_stopper
+/dashboard_client
+/force_mode_controller
+/force_torque_sensor_broadcaster
+/forward_position_controller
+/forward_velocity_controller
+/freedrive_mode_controller
+/io_and_status_controller
+/joint_state_broadcaster
+/joint_trajectory_controller
+/passthrough_trajectory_controller
+/robot_state_publisher
+/robotiq_85_driver
+/scaled_joint_trajectory_controller
+/single_robotiq_85_action_server
+/speed_scaling_state_broadcaster
+/static_transform_publisher_cAbspmaAGLMKjTcb
+/tcp_pose_broadcaster
+/tool_contact_controller
+/transform_listener_impl_7fe2a410aad0
+/ur_configuration_controller
+/ur_robot_state_helper
+/ur_tool_comm
+/urscript_interface
+
+On SIM:

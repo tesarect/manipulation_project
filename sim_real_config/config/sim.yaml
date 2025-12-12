@@ -1,0 +1,4 @@
+/**:
+  ros__parameters:
+    sensor_update_rate: 10.0
+    wheel_radius: 0.049
