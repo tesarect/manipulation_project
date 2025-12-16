@@ -84,23 +84,11 @@ public:
   void execute_trajectory_plan() {
     RCLCPP_INFO(LOGGER, "Planning and Executing Pick And Place Trajectory...");
 
-    RCLCPP_INFO(LOGGER, "-- Going to Home Position...");
-    rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
-    // setup the joint value target
-    RCLCPP_INFO(LOGGER, "Preparing Joint Value Trajectory...");
-    setup_joint_value_target(+0.0000, -2.3562, +1.5708, -1.5708, -1.5708,
-                             +0.0000);
-    // plan and execute the trajectory
-    RCLCPP_INFO(LOGGER, "Planning Joint Value Trajectory...");
-    plan_trajectory_kinematics();
-    RCLCPP_INFO(LOGGER, "Executing Joint Value Trajectory...");
-    execute_trajectory_kinematics();
-
     RCLCPP_INFO(LOGGER, "-- Going to Pregrasp Position...");
     rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     // setup the goal pose target
     RCLCPP_INFO(LOGGER, "Preparing Goal Pose Trajectory...");
-    setup_goal_pose_target(+0.343, +0.132, +0.264, -1.000, +0.000, +0.000,
+    setup_goal_pose_target(+0.375, +0.132, +0.262, -1.000, +0.000, +0.000,
                            +0.000);
     // plan and execute the trajectory
     RCLCPP_INFO(LOGGER, "Planning Goal Pose Trajectory...");
@@ -138,7 +126,7 @@ public:
     rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     // setup the gripper joint value
     RCLCPP_INFO(LOGGER, "Preparing Gripper Value...");
-    setup_joint_value_gripper(+0.500);
+    setup_joint_value_gripper(+0.800);
     // plan and execute the trajectory
     RCLCPP_INFO(LOGGER, "Planning Gripper Action...");
     plan_trajectory_gripper();
@@ -253,7 +241,7 @@ private:
   const double end_effector_step_ = 0.01;
   double plan_fraction_robot_ = 0.0;
 
-  const int sleep2_ = 3000;
+  const int sleep2_ = 700;
 
   void setup_joint_value_target(float angle0, float angle1, float angle2,
                                 float angle3, float angle4, float angle5) {

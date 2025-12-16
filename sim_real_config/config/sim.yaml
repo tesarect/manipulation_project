@@ -1,4 +1,172 @@
 /**:
   ros__parameters:
-    sensor_update_rate: 10.0
-    wheel_radius: 0.049
+    timing:
+      # sleep_duration_ms: 3000  # Sleep duration between movements in milliseconds
+      sleep_duration_ms: 0  # Sleep duration between movements in milliseconds
+
+    # === Planning Parameters ===
+    planning:
+      cartesian:
+        end_effector_step: 0.01  # Step size for cartesian path planning
+        jump_threshold: 0.0      # Jump threshold for cartesian planning
+      
+      kinematics:
+        planning_time: 5.0       # Maximum planning time in seconds
+        num_planning_attempts: 10
+
+    # === Gripper Parameters ===
+    gripper:
+      open_value: 0.0       # Joint value for open gripper
+      # close_value: 0.5      # Joint value for closed gripper
+      close_value: 0.7374     # Joint value for closed gripper
+      open_pose_name: "gripper_open"
+      close_pose_name: "gripper_close"
+
+    # === Robot Arm Poses (Joint Space) ===
+    # Format: [shoulder_pan, shoulder_lift, elbow, wrist_1, wrist_2, wrist_3]
+    poses:
+      joint_space:
+        home:
+          name: "Home Position"
+          values: [0.0000, -2.3562, 1.5708, -1.5708, -1.5708, 0.0000]
+        
+        # You can add more predefined joint poses here
+        # example:
+        #   name: "Example Joint Pose"
+        #   values: [0.0, -1.57, 1.57, -1.57, -1.57, 0.0]
+
+    # === Robot Arm Poses (Cartesian Space) ===
+    # Format: position [x, y, z], orientation [x, y, z, w] (quaternion)
+      cartesian_space:
+        pregrasp:
+          name: "Pregrasp Position"
+          position:
+            # x: 0.343
+            x: 0.340
+            # y: 0.132
+            # y: -0.023
+            y: -0.020
+            z: 0.264
+          orientation:
+            x: -1.000
+            y: 0.000
+            z: 0.000
+            w: 0.000
+        
+        grasp:
+          name: "Grasp Position"
+          position:
+            # x: 0.343
+            # y: 0.132
+            x: 0.0
+            y: 0.0
+            # z: 0.204  # 6cm lower than pregrasp (0.264 - 0.06)
+            z: 0.185  # 6cm lower than pregrasp (0.264 - 0.06)
+          orientation:
+            x: -1.000
+            y: 0.000
+            z: 0.000
+            w: 0.000
+        
+        place:
+          name: "Place Position"
+          # This will be computed dynamically based on current joint state
+          # with shoulder_pan rotated by 180 degrees (pi radians)
+          use_dynamic_computation: true
+          shoulder_pan_offset: 1.5708  # 90 degrees in radians for place position
+
+    # === Cartesian Offsets ===
+    # These are relative movements from current position
+    cartesian_offsets:
+      approach:
+        name: "Approach Movement"
+        delta:
+          x: 0.000
+          y: 0.000
+          # z: -0.060  # Move down 6cm
+          z: -0.075  # Move down 6cm
+          # z: -0.090  # Move down 6cm
+      
+      retreat:
+        name: "Retreat Movement"
+        delta:
+          x: 0.000
+          y: 0.000
+          z: 0.060   # Move up 6cm
+
+    # === Pick and Place Sequence ===
+    # Define the order of operations for the pick and place task
+    sequence:
+      num_steps: 9
+      
+      step_0:
+        step_number: 1
+        action: "move_to_joint_pose"
+        pose_name: "home"
+        offset_name: ""
+        gripper_command: ""
+        description: "Move to home position"
+      
+      step_1:
+        step_number: 2
+        action: "move_to_cartesian_pose"
+        pose_name: "pregrasp"
+        offset_name: ""
+        gripper_command: ""
+        description: "Move to pregrasp position above object"
+      
+      step_2:
+        step_number: 3
+        action: "gripper_action"
+        pose_name: ""
+        offset_name: ""
+        gripper_command: "open"
+        description: "Open gripper"
+      
+      step_3:
+        step_number: 4
+        action: "cartesian_offset"
+        pose_name: ""
+        offset_name: "approach"
+        gripper_command: ""
+        description: "Approach object by moving down"
+      
+      step_4:
+        step_number: 5
+        action: "gripper_action"
+        pose_name: ""
+        offset_name: ""
+        gripper_command: "close"
+        description: "Close gripper to grasp object"
+      
+      step_5:
+        step_number: 6
+        action: "cartesian_offset"
+        pose_name: ""
+        offset_name: "retreat"
+        gripper_command: ""
+        description: "Retreat by moving up with object"
+      
+      step_6:
+        step_number: 7
+        action: "move_to_place_position"
+        pose_name: ""
+        offset_name: ""
+        gripper_command: ""
+        description: "Rotate to place position (180 degrees)"
+      
+      step_7:
+        step_number: 8
+        action: "gripper_action"
+        pose_name: ""
+        offset_name: ""
+        gripper_command: "open"
+        description: "Open gripper to release object"
+      
+      step_8:
+        step_number: 9
+        action: "move_to_joint_pose"
+        pose_name: "home"
+        offset_name: ""
+        gripper_command: ""
+        description: "Return to home position"

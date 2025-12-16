@@ -1,17 +1,12 @@
 from moveit_configs_utils import MoveItConfigsBuilder
 from moveit_configs_utils.launches import generate_move_group_launch
-from ament_index_python.packages import get_package_share_directory
-from os.path import join as pthJoin
 
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
 def generate_launch_description():
 
-    config_pkg = get_package_share_directory('sim_real_config')
-    param_config = pthJoin(config_pkg, 'config', 'real.yaml')
-
-    moveit_config = MoveItConfigsBuilder("name", package_name="real_moveit_config").to_moveit_configs()
+    moveit_config = MoveItConfigsBuilder("name", package_name="sim_ur3e_config").to_moveit_configs()
     
     # Move Group Node
     move_group_node = Node(
@@ -22,7 +17,7 @@ def generate_launch_description():
             moveit_config.to_dict(),
             {"trajectory_execution.allowed_execution_duration_scaling": 2.0,},
             {"publish_robot_description_semantic": True},
-            {"use_sim_time": False},
+            {"use_sim_time": True},
         ],
     )
 

@@ -86,25 +86,23 @@ public:
   void execute_trajectory_plan() {
     RCLCPP_INFO(LOGGER, "Planning and Executing Pick And Place Trajectory...");
 
-    // RCLCPP_INFO(LOGGER, "-- Going to Home Position...");
-    // rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
-    // // setup the joint value target
-    // RCLCPP_INFO(LOGGER, "Preparing Joint Value Trajectory...");
-    // setup_joint_value_target(+0.0000, -2.3562, +1.5708, -1.5708, -1.5708,
-    //                          +0.0000);
-    // // plan and execute the trajectory
-    // RCLCPP_INFO(LOGGER, "Planning Joint Value Trajectory...");
-    // plan_trajectory_kinematics();
-    // RCLCPP_INFO(LOGGER, "Executing Joint Value Trajectory...");
-    // execute_trajectory_kinematics();
+    RCLCPP_INFO(LOGGER, "-- Going to Home Position...");
+    rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
+    // setup the joint value target
+    RCLCPP_INFO(LOGGER, "Preparing Joint Value Trajectory...");
+    setup_joint_value_target(+0.0000, -2.3562, +1.5708, -1.5708, -1.5708,
+                             +0.0000);
+    // plan and execute the trajectory
+    RCLCPP_INFO(LOGGER, "Planning Joint Value Trajectory...");
+    plan_trajectory_kinematics();
+    RCLCPP_INFO(LOGGER, "Executing Joint Value Trajectory...");
+    execute_trajectory_kinematics();
 
     RCLCPP_INFO(LOGGER, "-- Going to Pregrasp Position...");
     rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     // setup the goal pose target
     RCLCPP_INFO(LOGGER, "Preparing Goal Pose Trajectory...");
-    // setup_goal_pose_target(+0.343, +0.132, +0.264, -1.000, +0.000, +0.000,
-    //                        +0.000);
-    setup_goal_pose_target(+0.340, -0.020, +0.264, -1.000, +0.000, +0.000,
+    setup_goal_pose_target(+0.343, +0.132, +0.264, -1.000, +0.000, +0.000,
                            +0.000);
     // plan and execute the trajectory
     RCLCPP_INFO(LOGGER, "Planning Goal Pose Trajectory...");
@@ -130,9 +128,7 @@ public:
     rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     // setup the cartesian target
     RCLCPP_INFO(LOGGER, "Preparing Cartesian Trajectory...");
-    // setup_waypoints_target(+0.000, +0.000, -0.060);
-    // setup_waypoints_target(+0.000, +0.000, -0.075);
-    setup_waypoints_target(+0.000, +0.000, -0.078);
+    setup_waypoints_target(+0.000, +0.000, -0.060);
     // plan and execute the trajectory
     RCLCPP_INFO(LOGGER, "Planning Cartesian Trajectory...");
     plan_trajectory_cartesian();
@@ -144,23 +140,12 @@ public:
     rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     // setup the gripper joint value
     RCLCPP_INFO(LOGGER, "Preparing Gripper Value...");
-    // setup_joint_value_gripper(+0.500);
-    // setup_joint_value_gripper(+0.610);  //  exact
-    // setup_joint_value_gripper(+0.646);  // worked
-    RCLCPP_INFO(LOGGER, "Planning Gripper Action...");
-    RCLCPP_INFO(LOGGER, "Executing Gripper Action...");
-    // for (double i = 0.0; i <= 0.70; i += 0.030) { // working some times
-    for (double i = 0.50; i <= 0.69; i += 0.030) {
-      setup_joint_value_gripper(i);
-      plan_trajectory_gripper();
-      execute_trajectory_gripper();
-      rclcpp::sleep_for(std::chrono::milliseconds(300));
-    }
+    setup_joint_value_gripper(+0.500);
     // plan and execute the trajectory
-    // RCLCPP_INFO(LOGGER, "Planning Gripper Action...");
-    // plan_trajectory_gripper();
-    // RCLCPP_INFO(LOGGER, "Executing Gripper Action...");
-    // execute_trajectory_gripper();
+    RCLCPP_INFO(LOGGER, "Planning Gripper Action...");
+    plan_trajectory_gripper();
+    RCLCPP_INFO(LOGGER, "Executing Gripper Action...");
+    execute_trajectory_gripper();
     RCLCPP_INFO(LOGGER, "Gripper Closed");
 
     RCLCPP_INFO(LOGGER, "-- Retreating...");
@@ -270,7 +255,7 @@ private:
   const double end_effector_step_ = 0.01;
   double plan_fraction_robot_ = 0.0;
 
-  const int sleep2_ = 1500;
+  const int sleep2_ = 1000;
 
   void setup_joint_value_target(float angle0, float angle1, float angle2,
                                 float angle3, float angle4, float angle5) {

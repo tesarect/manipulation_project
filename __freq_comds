@@ -5,59 +5,169 @@ ros2 control list_controllers
 ros2 topic echo /joint_states --once
 
 colcon build --packages-select my_moveit_config
+cd ~/ros2_ws/ && colcon build --packages-select moveit2_scripts
+cd ~/ros2_ws/ && colcon build --packages-select my_moveit_config
+cd ~/ros2_ws/ && colcon build --packages-select real_moveit_config
+cd ~/ros2_ws/ && colcon build --packages-select ur3e_helper_scripts
 
                 S I M
 source ~/ros2_ws/install/setup.bash && ros2 launch my_moveit_config move_group.launch.py
 source ~/ros2_ws/install/setup.bash && ros2 launch my_moveit_config moveit_rviz.launch.py
-
+source ~/ros2_ws/install/setup.bash && ros2 launch moveit2_scripts pick_and_place.launch.py
                 R E A L
 source ~/ros2_ws/install/setup.bash && ros2 launch real_moveit_config move_group.launch.py
 source ~/ros2_ws/install/setup.bash && ros2 launch real_moveit_config moveit_rviz.launch.py
+source ~/ros2_ws/install/setup.bash && ros2 launch moveit2_scripts pick_and_place_real.launch.py
 
 
 ------------------------------------------------------------------
 On REAL:
-user:~$ ros2 control list_controllers
+ ros2 control list_controllers
 joint_state_broadcaster[joint_state_broadcaster/JointStateBroadcaster] active
-joint_trajectory_controller[joint_trajectory_controller/JointTrajectoryController] inactive
-io_and_status_controller[ur_controllers/GPIOController] active
-forward_velocity_controller[velocity_controllers/JointGroupVelocityController] inactive
+scaled_joint_trajectory_controller[ur_controllers/ScaledJointTrajectoryController] activeio_and_status_controller[ur_controllers/GPIOController] activeforward_position_controller[position_controllers/JointGroupPositionController] inactive
 speed_scaling_state_broadcaster[ur_controllers/SpeedScalingStateBroadcaster] active
-forward_position_controller[position_controllers/JointGroupPositionController] inactive
-force_torque_sensor_broadcaster[force_torque_sensor_broadcaster/ForceTorqueSensorBroadcaster] active
-force_mode_controller[ur_controllers/ForceModeController] inactive
-tcp_pose_broadcaster[pose_broadcaster/PoseBroadcaster] active
-passthrough_trajectory_controller[ur_controllers/PassthroughTrajectoryController] inactive
-freedrive_mode_controller[ur_controllers/FreedriveModeController] inactive
+force_torque_sensor_broadcaster[force_torque_sensor_broadcaster/ForceTorqueSensorBroadcaster]active
 ur_configuration_controller[ur_controllers/URConfigurationController] active
-tool_contact_controller[ur_controllers/ToolContactController] inactive
+---------------------------------
+joint_state_broadcaster[joint_state_broadcaster/JointStateBroadcaster] active
 scaled_joint_trajectory_controller[ur_controllers/ScaledJointTrajectoryController] active
+io_and_status_controller[ur_controllers/GPIOController] active
+forward_position_controller[position_controllers/JointGroupPositionController] inactive
+speed_scaling_state_broadcaster[ur_controllers/SpeedScalingStateBroadcaster] active
+force_torque_sensor_broadcaster[force_torque_sensor_broadcaster/ForceTorqueSensorBroadcaster] active
+ur_configuration_controller[ur_controllers/URConfigurationController] active
 
-user:~$ ros2 node list
+On SIM:
+ ros2 control list_controllers
+joint_trajectory_controller[joint_trajectory_controller/JointTrajectoryController] active
+gripper_controller  [position_controllers/GripperActionController] active
+joint_state_broadcaster[joint_state_broadcaster/JointStateBroadcaster] active
+
+========================================================================
+
+On REAL:
+ ros2 node list
 /controller_manager
 /controller_stopper
 /dashboard_client
-/force_mode_controller
 /force_torque_sensor_broadcaster
 /forward_position_controller
-/forward_velocity_controller
-/freedrive_mode_controller
 /io_and_status_controller
 /joint_state_broadcaster
-/joint_trajectory_controller
-/passthrough_trajectory_controller
 /robot_state_publisher
 /robotiq_85_driver
 /scaled_joint_trajectory_controller
 /single_robotiq_85_action_server
 /speed_scaling_state_broadcaster
-/static_transform_publisher_cAbspmaAGLMKjTcb
-/tcp_pose_broadcaster
-/tool_contact_controller
-/transform_listener_impl_7fe2a410aad0
+/static_transform_publisher_VCzuWaM3fHzSHluN
 /ur_configuration_controller
-/ur_robot_state_helper
+/ur_tool_comm
+/urscript_interface
+---------------------------
+/controller_manager
+/controller_stopper
+/dashboard_client
+/force_torque_sensor_broadcaster
+/forward_position_controller
+/io_and_status_controller
+/joint_state_broadcaster
+/robot_state_publisher
+/robotiq_85_driver
+/scaled_joint_trajectory_controller
+/single_robotiq_85_action_server
+/speed_scaling_state_broadcaster
+/static_transform_publisher_VCzuWaM3fHzSHluN
+/ur_configuration_controller
 /ur_tool_comm
 /urscript_interface
 
 On SIM:
+ ros2 node list
+/controller_manager
+/gazebo
+/gazebo_ros2_control
+/gripper_controller
+/joint_state_broadcaster
+/joint_trajectory_controller
+/robot_state_publisher
+
+========================================================================
+On REAL:
+ ros2 action list
+/execute_trajectory
+/gripper_controller/gripper_cmd
+/joint_trajectory_controller/follow_joint_trajectory
+/move_action
+/robotiq_gripper_controller/gripper_cmd
+/scaled_joint_trajectory_controller/follow_joint_trajectory
+----------------------
+ ros2 action list
+/robotiq_gripper_controller/gripper_cmd
+/scaled_joint_trajectory_controller/follow_joint_trajectory
+
+On SIM:
+ ros2 action list
+/gripper_controller/gripper_cmd
+/joint_trajectory_controller/follow_joint_trajectory
+========================================================================
+
+On REAL:
+ ros2 action info /scaled_joint_trajectory_controller/follow_joint_trajectory
+Action: /scaled_joint_trajectory_controller/follow_joint_trajectory
+Action clients: 0
+Action servers: 1
+    /scaled_joint_trajectory_controller
+ ros2 action info /robotiq_gripper_controller/gripper_cmd
+Action: /robotiq_gripper_controller/gripper_cmd
+Action clients: 0
+Action servers: 1
+    /single_robotiq_85_action_server
+
+On SIM:
+ros2 action info /joint_trajectory_controller/follow_joint_trajectory
+
+========================================================================
+
+ros2 action send_goal /robotiq_gripper_controller/gripper_cmd control_msgs/action/GripperCommand "command:
+  position: 0.0
+  max_effort: 0.0
+"
+
+world-base_link
+At time 0.0
+- Translation: [0.000, 0.000, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.000, 1.000]
+- Rotation: in RPY (radian) [0.000, -0.000, 0.000]
+- Rotation: in RPY (degree) [0.000, -0.000, 0.000]
+- Matrix:
+  1.000  0.000  0.000  0.000
+  0.000  1.000  0.000  0.000
+  0.000  0.000  1.000  0.000
+  0.000  0.000  0.000  1.000
+
+world-tool0
+At time 308.466000000
+- Translation: [0.000, 0.223, 0.694]
+- Rotation: in Quaternion [-0.707, 0.001, 0.001, 0.707]
+- Rotation: in RPY (radian) [-1.571, 0.002, 0.000]
+- Rotation: in RPY (degree) [-90.000, 0.090, 0.004]
+- Matrix:
+  1.000 -0.002 -0.000  0.000
+  0.000 -0.000  1.000  0.223
+ -0.002 -1.000 -0.000  0.694
+  0.000  0.000  0.000  1.000
+^C[INFO] [1765695083.958349474] [rclcpp]: signal_handler(signum=2)
+
+base_link - tool0
+At time 412.536000000
+- Translation: [0.000, 0.223, 0.694]
+- Rotation: in Quaternion [-0.707, 0.001, 0.001, 0.707]
+- Rotation: in RPY (radian) [-1.571, 0.002, 0.000]
+- Rotation: in RPY (degree) [-90.000, 0.090, 0.004]
+- Matrix:
+  1.000 -0.002 -0.000  0.000
+  0.000 -0.000  1.000  0.223
+ -0.002 -1.000 -0.000  0.694
+  0.000  0.000  0.000  1.000
+
+  

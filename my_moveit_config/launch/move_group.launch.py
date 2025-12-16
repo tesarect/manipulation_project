@@ -1,15 +1,10 @@
 from moveit_configs_utils import MoveItConfigsBuilder
 from moveit_configs_utils.launches import generate_move_group_launch
-from ament_index_python.packages import get_package_share_directory
-from os.path import join as pthJoin
 
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
 def generate_launch_description():
-
-    config_pkg = get_package_share_directory('sim_real_config')
-    param_config = pthJoin(config_pkg, 'config', 'sim.yaml')
 
     moveit_config = MoveItConfigsBuilder("name", package_name="my_moveit_config").to_moveit_configs()
     
