@@ -9,10 +9,6 @@ const std::string PickAndPlaceTrajectory::PLANNING_GROUP_ROBOT =
     "ur_manipulator";
 const std::string PickAndPlaceTrajectory::PLANNING_GROUP_GRIPPER = "gripper";
 
-// ==============================================================================
-// CONSTRUCTOR
-// ==============================================================================
-
 PickAndPlaceTrajectory::PickAndPlaceTrajectory(
     rclcpp::Node::SharedPtr base_node_)
     : base_node_(base_node_), plan_success_robot_(false),
@@ -79,17 +75,9 @@ PickAndPlaceTrajectory::PickAndPlaceTrajectory(
   RCLCPP_INFO(LOGGER, "Class Initialized: Pick And Place Trajectory");
 }
 
-// ==============================================================================
-// DESTRUCTOR
-// ==============================================================================
-
 PickAndPlaceTrajectory::~PickAndPlaceTrajectory() {
   RCLCPP_INFO(LOGGER, "Class Terminated: Pick And Place Trajectory");
 }
-
-// ==============================================================================
-// PARAMETER LOADING METHODS
-// ==============================================================================
 
 void PickAndPlaceTrajectory::load_parameters() {
   load_timing_parameters();
@@ -367,9 +355,7 @@ PickAndPlaceTrajectory::string_to_action_type(const std::string &action_str) {
 }
 
 void PickAndPlaceTrajectory::print_configuration() {
-  RCLCPP_INFO(LOGGER, "========================================");
-  RCLCPP_INFO(LOGGER, "CONFIGURATION SUMMARY");
-  RCLCPP_INFO(LOGGER, "========================================");
+  RCLCPP_INFO(LOGGER, "CONFIGURATION SUMMARY=====================");
 
   RCLCPP_INFO(LOGGER, "Joint Poses: %zu", config_.joint_poses.size());
   for (const auto &pose : config_.joint_poses) {
@@ -392,18 +378,11 @@ void PickAndPlaceTrajectory::print_configuration() {
     RCLCPP_INFO(LOGGER, "  Step %d: %s", step.step_number,
                 step.description.c_str());
   }
-
-  RCLCPP_INFO(LOGGER, "========================================");
 }
 
-// ==============================================================================
-// TRAJECTORY EXECUTION METHOD - SEQUENCE DRIVEN
-// ==============================================================================
-
 void PickAndPlaceTrajectory::execute_trajectory_plan() {
-  RCLCPP_INFO(LOGGER, "========================================");
-  RCLCPP_INFO(LOGGER, "STARTING PICK AND PLACE SEQUENCE");
-  RCLCPP_INFO(LOGGER, "========================================");
+  RCLCPP_INFO(LOGGER,
+              "STARTING PICK AND PLACE SEQUENCE=======================");
   RCLCPP_INFO(LOGGER, "Total steps: %zu", config_.sequence.size());
 
   // Execute each step in the sequence
@@ -429,15 +408,7 @@ void PickAndPlaceTrajectory::execute_trajectory_plan() {
 
     RCLCPP_INFO(LOGGER, "Step %d completed successfully ✓", step.step_number);
   }
-
-  RCLCPP_INFO(LOGGER, "========================================");
-  RCLCPP_INFO(LOGGER, "PICK AND PLACE SEQUENCE COMPLETE!");
-  RCLCPP_INFO(LOGGER, "========================================");
 }
-
-// ==============================================================================
-// HELPER METHODS - FIND POSES BY NAME
-// ==============================================================================
 
 const JointPose *
 PickAndPlaceTrajectory::find_joint_pose(const std::string &name) const {
@@ -471,10 +442,6 @@ PickAndPlaceTrajectory::find_cartesian_offset(const std::string &name) const {
   RCLCPP_WARN(LOGGER, "Cartesian offset '%s' not found!", name.c_str());
   return nullptr;
 }
-
-// ==============================================================================
-// SEQUENCE EXECUTION METHODS
-// ==============================================================================
 
 bool PickAndPlaceTrajectory::execute_sequence_step(const SequenceStep &step) {
   switch (step.action) {
@@ -637,14 +604,6 @@ bool PickAndPlaceTrajectory::execute_move_to_place_position() {
   return plan_success_robot_;
 }
 
-// ==============================================================================
-// TRAJECTORY PLANNING METHODS (UNCHANGED)
-// ==============================================================================
-
-// ==============================================================================
-// EXISTING TRAJECTORY PLANNING METHODS
-// ==============================================================================
-
 void PickAndPlaceTrajectory::setup_joint_value_target(
     float angle0, float angle1, float angle2, float angle3, float angle4,
     float angle5) {
@@ -736,10 +695,6 @@ void PickAndPlaceTrajectory::execute_trajectory_gripper() {
   }
 }
 
-// ==============================================================================
-// MAIN FUNCTION
-// ==============================================================================
-
 int main(int argc, char **argv) {
   rclcpp::init(argc, argv);
 
@@ -754,5 +709,3 @@ int main(int argc, char **argv) {
 
   return 0;
 }
-
-// End of Code

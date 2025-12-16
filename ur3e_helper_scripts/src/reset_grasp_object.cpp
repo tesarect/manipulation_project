@@ -20,7 +20,7 @@ static const float real_pos_y = +0.132; // adjust as required
 
 // program variables
 static const rclcpp::Logger LOGGER = rclcpp::get_logger("move_group_demo");
-static const std::string PLANNING_GROUP_UR3_ARM = "ur3_arm";
+static const std::string PLANNING_GROUP_UR3_ARM = "ur_manipulator";
 static const std::string PLANNING_GROUP_GRIPPER = "gripper";
 
 class ResetGraspObject {
