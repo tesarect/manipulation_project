@@ -8,7 +8,7 @@ colcon build --packages-select my_moveit_config
 cd ~/ros2_ws/ && colcon build --packages-select moveit2_scripts
 cd ~/ros2_ws/ && colcon build --packages-select my_moveit_config
 cd ~/ros2_ws/ && colcon build --packages-select real_moveit_config
-cd ~/ros2_ws/ && colcon build --packages-select ur3e_helper_scripts
+cd ~/ros2_ws/ && colcon build --packages-select sim_ur3e_config real_ur3e_config ur3e_helper_scripts
 
                 S I M
 source ~/ros2_ws/install/setup.bash && ros2 launch my_moveit_config move_group.launch.py
