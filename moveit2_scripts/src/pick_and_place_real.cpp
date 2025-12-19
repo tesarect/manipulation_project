@@ -155,7 +155,7 @@ public:
     RCLCPP_INFO(LOGGER, "-- Preparing Joint Value Trajectory...");
     rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     setup_joint_value_target(
-        +1.5708, joint_group_positions_robot_[1],
+        +3.1416, joint_group_positions_robot_[1],
         joint_group_positions_robot_[2], joint_group_positions_robot_[3],
         joint_group_positions_robot_[4], joint_group_positions_robot_[5]);
     // plan and execute the trajectory
