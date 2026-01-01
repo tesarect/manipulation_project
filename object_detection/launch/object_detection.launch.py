@@ -1,0 +1,60 @@
+import os
+from ament_index_python.packages import get_package_share_directory
+from launch import LaunchDescription
+from launch_ros.actions import Node
+from launch.actions import DeclareLaunchArgument, OpaqueFunction
+from launch.substitutions import LaunchConfiguration
+from launch.conditions import IfCondition, UnlessCondition
+
+
+def generate_launch_description():
+
+    use_sim_time = LaunchConfiguration('use_sim_time', default='True')
+
+    rviz_config = os.path.join(get_package_share_directory('my_moveit_config'), 'config', 'moveit.rviz')
+    
+    static_tf = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='wrist_camera_static_tf',
+        arguments=[
+            '0.338', '0.450', '0.100',              # translation
+            '0.000', '0.866', '-0.500', '0.000',    # quaternion (qx qy qz qw)
+            'base_link',
+            'wrist_rgbd_camera_depth_optical_frame'
+        ])
+    
+    rviz =  Node(
+            package='rviz2',
+            executable='rviz2',
+            output='screen',
+            name='rviz_node',
+            parameters=[{'use_sim_time': use_sim_time}],
+            arguments=['-d', rviz_config]
+        )
+
+    # scripted_static_tf = Node(
+    #         package='object_detection',
+    #         executable='object_detection',
+    #         output='screen',
+    #         name='object_detection',
+    #         parameters=[{'use_sim_time': use_sim_time}],
+    #         emulate_tty=True,
+    #     )
+
+    
+    obj_detect = Node(
+            package='object_detection',
+            executable='object_detection',
+            output='screen',
+            name='object_detection',
+            parameters=[{'use_sim_time': use_sim_time}],
+            emulate_tty=True,
+        )
+
+    return LaunchDescription([
+        static_tf,
+        # scripted_static_tf,
+        rviz,
+        obj_detect,
+    ])
