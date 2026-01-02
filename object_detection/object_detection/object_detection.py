@@ -30,9 +30,11 @@ class ObjectDetection(Node):
             cloud = self.from_ros_msg(msg)
 
             # Filtered cloud for surface detection
-            filtered_cloud_plane = self.filter_cloud(cloud, max_x_dist=2.15, min_height=0.35, max_height=0.4)
+            filtered_cloud_plane = self.filter_cloud(cloud, max_x_dist=2.15, min_height=-0.09, max_height=0.0)
+            # filtered_cloud_plane = self.filter_cloud(cloud, max_x_dist=2.15, max_y_dist=0.5, min_height=-0.09, max_height=0.0)
             # Filtered cloud for object detection
-            filtered_cloud_objects = self.filter_cloud(cloud, max_x_dist=2.15, min_height=0.4, max_height=1.2)
+            filtered_cloud_objects = self.filter_cloud(cloud, max_x_dist=2.15, min_height=0.0, max_height=1.2)
+            # filtered_cloud_objects = self.filter_cloud(cloud, max_x_dist=2.15, max_y_dist=0.5, min_height=0.0, max_height=1.2)
 
             # Segmentation: Plane extraction
             plane_indices, plane_coefficients, plane_cloud = self.extract_plane(filtered_cloud_plane)
@@ -117,6 +119,7 @@ class ObjectDetection(Node):
                                     [2*x*z - 2*y*w, 2*y*z + 2*x*w, 1 - 2*x**2 - 2*y**2]])
         return rotation_matrix
 
+    # def filter_cloud(self, cloud: pcl.PointCloud, max_x_dist: float, max_y_dist: float, min_height: float, max_height: float) -> Union[pcl.PointCloud, None]:
     def filter_cloud(self, cloud: pcl.PointCloud, max_x_dist: float, min_height: float, max_height: float) -> Union[pcl.PointCloud, None]:
         """Filter cloud"""
         try:
@@ -177,9 +180,31 @@ class ObjectDetection(Node):
             centroid = np.mean(cluster, axis=0)
 
             # Computes the min and max coordinates along each axis 
+
+            num_points = len(indices)
             min_coords = np.min(cluster, axis=0)
             max_coords = np.max(cluster, axis=0)
             dimensions = max_coords - min_coords
+
+            if cluster_type == "Bench Surface":
+                # Ignoring lesser cluster points
+                if num_points < 10000:
+                    continue
+                
+                dims_sorted = np.sort(dimensions)
+                thickness = dims_sorted[0]
+                width = dims_sorted[1]
+                length = dims_sorted[2]
+
+
+                # Ignoring thicker plane
+                if thickness > 0.03:
+                    continue
+
+                # Ignoring narrow plane
+                if width < 0.05:
+                    self.get_logger().info("Rejected: too narrow")
+                    continue
 
             # Append clusters, centroids and dimensions to lists
             bench_clusters.append(cluster)
@@ -187,7 +212,7 @@ class ObjectDetection(Node):
             cluster_dimensions.append(dimensions.tolist())
 
             # Log cluster information
-            num_points = len(indices)
+            # num_points = len(indices)
             self.get_logger().info(f"{cluster_type} cluster {idx + 1} has {num_points} points.")
             self.get_logger().info(f"Centroid of {cluster_type} cluster {idx + 1}: {centroid}")
             self.get_logger().info(f"Dimensions of {cluster_type} cluster {idx + 1}: {dimensions}")

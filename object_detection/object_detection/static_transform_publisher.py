@@ -4,7 +4,7 @@ import tf2_ros
 
 class StaticTransformPublisher:
     def __init__(self) -> None:
-        self.node = rclpy.create_node('wrist_camera_scripted_static_tf')
+        self.node = rclpy.create_node('wrist_camera_scripted_static_tf_node')
         self.broadcaster = tf2_ros.StaticTransformBroadcaster(self.node)
 
     def publish_static_transform(self) -> None:

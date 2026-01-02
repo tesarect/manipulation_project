@@ -16,9 +16,9 @@ def generate_launch_description():
     static_tf = Node(
         package='tf2_ros',
         executable='static_transform_publisher',
-        name='wrist_camera_static_tf',
+        name='arm2ptc_static_tf',
         arguments=[
-            '0.338', '0.450', '0.100',              # translation
+            '0.338', '0.450', '0.100',              # translation (x, y, z)
             '0.000', '0.866', '-0.500', '0.000',    # quaternion (qx qy qz qw)
             'base_link',
             'wrist_rgbd_camera_depth_optical_frame'
@@ -33,14 +33,14 @@ def generate_launch_description():
             arguments=['-d', rviz_config]
         )
 
-    # scripted_static_tf = Node(
-    #         package='object_detection',
-    #         executable='object_detection',
-    #         output='screen',
-    #         name='object_detection',
-    #         parameters=[{'use_sim_time': use_sim_time}],
-    #         emulate_tty=True,
-    #     )
+    scripted_static_tf = Node(
+            package='object_detection',
+            executable='static_transform_publisher',
+            output='screen',
+            name='arm2ptc_static_tf',
+            parameters=[{'use_sim_time': use_sim_time}],
+            emulate_tty=True,
+        )
 
     
     obj_detect = Node(

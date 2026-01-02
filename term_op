@@ -1,0 +1,97 @@
+[object_detection-3] [INFO] [1767337445.982907393] [object_detection]: Number of inliers: 34405
+[object_detection-3] [INFO] [1767337445.983576408] [object_detection]: Plane coefficients: [0.0013988325372338295, -0.022709593176841736, 0.9997410774230957, 0.0045618657022714615]
+[rviz2-2] [ERROR] [1767337446.264846625] [moveit_ros_visualization.motion_planning_frame]: Action server: /recognize_objects not available
+[object_detection-3] [INFO] [1767337446.401842652] [object_detection]: Processing Bench Surface cluster 1...
+[object_detection-3] [INFO] [1767337446.408891145] [object_detection]: Bench Surface cluster 1 has 27100 points.
+[object_detection-3] [INFO] [1767337446.410019570] [object_detection]: Centroid of Bench Surface cluster 1: [ 0.3381656  -0.02708556 -0.00555379]
+[object_detection-3] [INFO] [1767337446.410895210] [object_detection]: Dimensions of Bench Surface cluster 1: [0.67058593 0.16769642 0.00549397]
+[object_detection-3] [INFO] [1767337446.411547645] [object_detection]: Processing Bench Surface cluster 2...
+[object_detection-3] [INFO] [1767337446.412805916] [object_detection]: Bench Surface cluster 2 has 3761 points.
+[object_detection-3] [INFO] [1767337446.414465915] [object_detection]: Centroid of Bench Surface cluster 2: [ 0.6438391 -0.6355184 -0.0198089]
+[object_detection-3] [INFO] [1767337446.415367445] [object_detection]: Dimensions of Bench Surface cluster 2: [0.6125411  0.01152068 0.01995553]
+[object_detection-3] [INFO] [1767337446.416015082] [object_detection]: Processing Bench Surface cluster 3...
+[object_detection-3] [INFO] [1767337446.417087245] [object_detection]: Bench Surface cluster 3 has 3544 points.
+[object_detection-3] [INFO] [1767337446.417892157] [object_detection]: Centroid of Bench Surface cluster 3: [ 0.00708772 -0.6358918  -0.01916048]
+[object_detection-3] [INFO] [1767337446.419252826] [object_detection]: Dimensions of Bench Surface cluster 3: [0.5664565  0.01056063 0.01829257]
+[object_detection-3] [INFO] [1767337446.469868862] [object_detection]: Processing Object cluster 1...
+[object_detection-3] [INFO] [1767337446.471278988] [object_detection]: Object cluster 1 has 1652 points.
+[object_detection-3] [INFO] [1767337446.472290645] [object_detection]: Centroid of Object cluster 1: [ 0.32800165 -0.01077989  0.02830127]
+[object_detection-3] [INFO] [1767337446.474068860] [object_detection]: Dimensions of Object cluster 1: [0.01959643 0.01924329 0.05168538]
+[object_detection-3] [INFO] [1767337446.476149035] [object_detection]: Published 3 bench plane markers
+[object_detection-3] [INFO] [1767337446.478728376] [object_detection]: Published 1 objects on flat surface markers!
+[object_detection-3] [INFO] [1767337449.622215578] [object_detection]: Number of inliers: 34405
+[object_detection-3] [INFO] [1767337449.622857539] [object_detection]: Plane coefficients: [0.0013988325372338295, -0.022709593176841736, 0.9997410774230957, 0.0045618657022714615]
+[object_detection-3] [INFO] [1767337450.077865051] [object_detection]: Processing Bench Surface cluster 1...
+[object_detection-3] [INFO] [1767337450.080749276] [object_detection]: Bench Surface cluster 1 has 27100 points.
+[object_detection-3] [INFO] [1767337450.081682041] [object_detection]: Centroid of Bench Surface cluster 1: [ 0.3381656  -0.02708556 -0.00555379]
+[object_detection-3] [INFO] [1767337450.082523075] [object_detection]: Dimensions of Bench Surface cluster 1: [0.67058593 0.16769642 0.00549397]
+[object_detection-3] [INFO] [1767337450.083120051] [object_detection]: Processing Bench Surface cluster 2...
+[object_detection-3] [INFO] [1767337450.084220300] [object_detection]: Bench Surface cluster 2 has 3761 points.
+[object_detection-3] [INFO] [1767337450.084823672] [object_detection]: Centroid of Bench Surface cluster 2: [ 0.6438391 -0.6355184 -0.0198089]
+[object_detection-3] [INFO] [1767337450.085563827] [object_detection]: Dimensions of Bench Surface cluster 2: [0.6125411  0.01152068 0.01995553]
+[object_detection-3] [INFO] [1767337450.086149761] [object_detection]: Processing Bench Surface cluster 3...
+[object_detection-3] [INFO] [1767337450.087181946] [object_detection]: Bench Surface cluster 3 has 3544 points.
+[object_detection-3] [INFO] [1767337450.088635037] [object_detection]: Centroid of Bench Surface cluster 3: [ 0.00708772 -0.6358918  -0.01916048]
+[object_detection-3] [INFO] [1767337450.090011881] [object_detection]: Dimensions of Bench Surface cluster 3: [0.5664565  0.01056063 0.01829257]
+[object_detection-3] [INFO] [1767337450.134588374] [object_detection]: Processing Object cluster 1...
+[object_detection-3] [INFO] [1767337450.135498636] [object_detection]: Object cluster 1 has 1652 points.
+[object_detection-3] [INFO] [1767337450.136341628] [object_detection]: Centroid of Object cluster 1: [ 0.32800165 -0.01077989  0.02830127]
+[object_detection-3] [INFO] [1767337450.137197428] [object_detection]: Dimensions of Object cluster 1: [0.01959643 0.01924329 0.05168538]
+[object_detection-3] [INFO] [1767337450.138164223] [object_detection]: Published 3 bench plane markers
+[object_detection-3] [INFO] [1767337450.139399971] [object_detection]: Published 1 objects on flat surface markers!
+[object_detection-3] [INFO] [1767337453.211114780] [object_detection]: Number of inliers: 34405
+[object_detection-3] [INFO] [1767337453.211889135] [object_detection]: Plane coefficients: [0.0013988325372338295, -0.022709593176841736, 0.9997410774230957, 0.0045618657022714615]
+[object_detection-3] [INFO] [1767337453.646835660] [object_detection]: Processing Bench Surface cluster 1...
+[object_detection-3] [INFO] [1767337453.649802590] [object_detection]: Bench Surface cluster 1 has 27100 points.
+[object_detection-3] [INFO] [1767337453.650762089] [object_detection]: Centroid of Bench Surface cluster 1: [ 0.3381656  -0.02708556 -0.00555379]
+[object_detection-3] [INFO] [1767337453.651580660] [object_detection]: Dimensions of Bench Surface cluster 1: [0.67058593 0.16769642 0.00549397]
+[object_detection-3] [INFO] [1767337453.653748750] [object_detection]: Processing Bench Surface cluster 2...
+[object_detection-3] [INFO] [1767337453.655429581] [object_detection]: Bench Surface cluster 2 has 3761 points.
+[object_detection-3] [INFO] [1767337453.656269871] [object_detection]: Centroid of Bench Surface cluster 2: [ 0.6438391 -0.6355184 -0.0198089]
+[object_detection-3] [INFO] [1767337453.657085118] [object_detection]: Dimensions of Bench Surface cluster 2: [0.6125411  0.01152068 0.01995553]
+[object_detection-3] [INFO] [1767337453.657689055] [object_detection]: Processing Bench Surface cluster 3...
+[object_detection-3] [INFO] [1767337453.659089213] [object_detection]: Bench Surface cluster 3 has 3544 points.
+[object_detection-3] [INFO] [1767337453.659755933] [object_detection]: Centroid of Bench Surface cluster 3: [ 0.00708772 -0.6358918  -0.01916048]
+[object_detection-3] [INFO] [1767337453.660633608] [object_detection]: Dimensions of Bench Surface cluster 3: [0.5664565  0.01056063 0.01829257]
+[object_detection-3] [INFO] [1767337453.703808764] [object_detection]: Processing Object cluster 1...
+[object_detection-3] [INFO] [1767337453.708749434] [object_detection]: Object cluster 1 has 1652 points.
+[object_detection-3] [INFO] [1767337453.709603026] [object_detection]: Centroid of Object cluster 1: [ 0.32800165 -0.01077989  0.02830127]
+[object_detection-3] [INFO] [1767337453.710250722] [object_detection]: Dimensions of Object cluster 1: [0.01959643 0.01924329 0.05168538]
+[object_detection-3] [INFO] [1767337453.711185837] [object_detection]: Published 3 bench plane markers
+[object_detection-3] [INFO] [1767337453.712153657] [object_detection]: Published 1 objects on flat surface markers!
+[object_detection-3] [INFO] [1767337456.847487503] [object_detection]: Number of inliers: 34405
+[object_detection-3] [INFO] [1767337456.850500269] [object_detection]: Plane coefficients: [0.0013988325372338295, -0.022709593176841736, 0.9997410774230957, 0.0045618657022714615]
+[object_detection-3] [INFO] [1767337457.255302758] [object_detection]: Processing Bench Surface cluster 1...
+[object_detection-3] [INFO] [1767337457.258338936] [object_detection]: Bench Surface cluster 1 has 27100 points.
+[object_detection-3] [INFO] [1767337457.259181370] [object_detection]: Centroid of Bench Surface cluster 1: [ 0.3381656  -0.02708556 -0.00555379]
+[object_detection-3] [INFO] [1767337457.259888608] [object_detection]: Dimensions of Bench Surface cluster 1: [0.67058593 0.16769642 0.00549397]
+[object_detection-3] [INFO] [1767337457.260368688] [object_detection]: Processing Bench Surface cluster 2...
+[object_detection-3] [INFO] [1767337457.261383449] [object_detection]: Bench Surface cluster 2 has 3761 points.
+[object_detection-3] [INFO] [1767337457.262088477] [object_detection]: Centroid of Bench Surface cluster 2: [ 0.6438391 -0.6355184 -0.0198089]
+[object_detection-3] [INFO] [1767337457.262782668] [object_detection]: Dimensions of Bench Surface cluster 2: [0.6125411  0.01152068 0.01995553]
+[object_detection-3] [INFO] [1767337457.263296341] [object_detection]: Processing Bench Surface cluster 3...
+[object_detection-3] [INFO] [1767337457.264381866] [object_detection]: Bench Surface cluster 3 has 3544 points.
+[object_detection-3] [INFO] [1767337457.264982066] [object_detection]: Centroid of Bench Surface cluster 3: [ 0.00708772 -0.6358918  -0.01916048]
+[object_detection-3] [INFO] [1767337457.265631102] [object_detection]: Dimensions of Bench Surface cluster 3: [0.5664565  0.01056063 0.01829257]
+[object_detection-3] [INFO] [1767337457.307134532] [object_detection]: Processing Object cluster 1...
+[object_detection-3] [INFO] [1767337457.308158423] [object_detection]: Object cluster 1 has 1652 points.
+[object_detection-3] [INFO] [1767337457.308828088] [object_detection]: Centroid of Object cluster 1: [ 0.32800165 -0.01077989  0.02830127]
+[object_detection-3] [INFO] [1767337457.309570814] [object_detection]: Dimensions of Object cluster 1: [0.01959643 0.01924329 0.05168538]
+[object_detection-3] [INFO] [1767337457.310624173] [object_detection]: Published 3 bench plane markers
+[object_detection-3] [INFO] [1767337457.311577832] [object_detection]: Published 1 objects on flat surface markers!
+
+
+
+
+
+ Bench Surface cluster 1 has 27100 points.
+ Centroid of Bench Surface cluster 1: [ 0.3381656  -0.02708556 -0.00555379]
+ Dimensions of Bench Surface cluster 1: [0.67058593 0.16769642 0.00549397]
+ Processing Bench Surface cluster 2...
+ Bench Surface cluster 2 has 3761 points.
+ Centroid of Bench Surface cluster 2: [ 0.6438391 -0.6355184 -0.0198089]
+ Dimensions of Bench Surface cluster 2: [0.6125411  0.01152068 0.01995553]
+ Processing Bench Surface cluster 3...
+ Bench Surface cluster 3 has 3544 points.
+ Centroid of Bench Surface cluster 3: [ 0.00708772 -0.6358918  -0.01916048]
+ Dimensions of Bench Surface cluster 3: [0.5664565  0.01056063 0.01829257]
