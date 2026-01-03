@@ -11,7 +11,8 @@ def generate_launch_description():
 
     use_sim_time = LaunchConfiguration('use_sim_time', default='True')
 
-    rviz_config = os.path.join(get_package_share_directory('my_moveit_config'), 'config', 'moveit.rviz')
+    rviz_config = os.path.join(get_package_share_directory('my_moveit_config'), 'config', 'moveit_testing.rviz')
+    # rviz_config = os.path.join(get_package_share_directory('my_moveit_config'), 'config', 'moveit.rviz')
     
     static_tf = Node(
         package='tf2_ros',

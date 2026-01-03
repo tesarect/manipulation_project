@@ -11,7 +11,8 @@ from typing import List, Tuple, Union
 
 class ObjectDetection(Node):
     def __init__(self) -> None:
-        super().__init__('object_detection_node')
+        # super().__init__('object_detection_node')
+        super().__init__('perception_node')
         self.pc_sub = self.create_subscription(PointCloud2, '/wrist_rgbd_depth_sensor/points',
             self.callback, 10)
         self.surface_pub = self.create_publisher(MarkerArray, 'bench_markers', 10)
@@ -283,7 +284,8 @@ class ObjectDetection(Node):
             marker.id = idx
             marker.type = Marker.CUBE
             marker.action = Marker.ADD
-            marker.pose.position.x = float(centroid[0]) + offset_x
+            # marker.pose.position.x = float(centroid[0]) + offset_x
+            marker.pose.position.x = float(centroid[0])
             marker.pose.position.y = float(centroid[1])
             marker.pose.position.z = float(centroid[2])
             marker.pose.orientation.w = 1.0

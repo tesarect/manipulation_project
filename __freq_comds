@@ -4,12 +4,16 @@ ros2 launch the_construct_office_gazebo warehouse_ur3e.launch.xml
 ros2 control list_controllers
 ros2 topic echo /joint_states --once
 
-ros2 launch my_moveit_config move_group.launch.py
-ros2 launch object_detection object_detection.launch.py
+source ~/ros2_ws/install/setup.bash && ros2 launch my_moveit_config move_group.launch.py
+source ~/ros2_ws/install/setup.bash && ros2 launch object_detection object_detection.launch.py
+
+source ~/ros2_ws/install/setup.bash && ros2 launch moveit2_scripts pick_and_place_perception.launch.py
+source ~/ros2_ws/install/setup.bash && ros2 launch moveit2_scripts pick_and_place_perception.launch.py > output.log 2>&1   
+
 cd ~/ros2_ws && colcon build --packages-select object_detection my_moveit_config && source install/setup.bash
+cd ~/ros2_ws && colcon build --packages-select moveit2_scripts object_detection my_moveit_config && source install/setup.bash
 
-
-
+ros2 run rqt_console rqt_console
 
 ros2 pkg create --build-type ament_python object_detection
 cd ~/ros2_ws/
@@ -29,5 +33,22 @@ At time 0.0
   0.000  0.000  0.000  1.000
 ^C[INFO] [1767253070.407655558] [rclcpp]: signal_handler(signum=2)
 
-0.338', '0.450', '0.100',
-'0.000', '0.866', '-0.500', '0.000'
+user:~$ ros2 topic echo /object_detected
+object_id: 0
+position:
+  x: 0.32800164818763733
+  y: -0.010779893025755882
+  z: 0.028301265090703964
+height: 0.01959642767906189
+width: 0.019243285059928894
+thickness: 0.051685381680727005
+---
+user:~$ ros2 topic echo /surface_detected
+surface_id: 0
+position:
+  x: 0.33816561102867126
+  y: -0.02708556316792965
+  z: -0.005553787108510733
+height: 0.6705859303474426
+width: 0.16769641637802124
+---
