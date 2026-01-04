@@ -118,6 +118,7 @@ public:
     detected_object_thickness_ = msg->thickness;
 
     auto &clk = *move_group_node_->get_clock();
+    // ✓ Object detected at position: [0.328, -0.011, 0.028]
     RCLCPP_INFO_THROTTLE(
         LOGGER, clk, 30000, "✓ Object detected at position: [%.3f, %.3f, %.3f]",
         detected_object_x_, detected_object_y_, detected_object_z_);
@@ -263,16 +264,20 @@ public:
       return;
     }
 
+    // ✓ Object detected at position: [x: 0.328, y: -0.011, z: 0.028]
+    // Object dimensions: H=0.020, W=0.019, T=0.052
+
     // Get the detected object position (thread-safe)
     double obj_x, obj_y, obj_z, obj_thickness, obj_width, obj_height;
     {
       std::lock_guard<std::mutex> lock(object_mutex_);
-      obj_x = detected_object_x_;
+      obj_x = detected_object_x_ + 0.002;
       obj_y = detected_object_y_;
       //   obj_z = detected_object_z_;
       //   obj_z = detected_object_z_ + 0.10;
-      // addition for ground clearance WORKS for .10
-      obj_z = detected_object_z_ + 0.07; // addition for ground clearance
+      obj_z = detected_object_z_ + 0.11;
+      //   addition for ground clearance WORKS for .10
+      //   obj_z = detected_object_z_ + 0.09; // addition for ground clearance
       obj_thickness = detected_object_thickness_;
       obj_width = detected_object_width_;
       obj_height = detected_object_height_;
@@ -280,7 +285,8 @@ public:
 
     // Calculate pregrasp position (above the object)
     // double pregrasp_offset = 0.08; // 8cm above object center
-    double pregrasp_offset = 0.25; // 8cm above object center
+    // double pregrasp_offset = 0.25;
+    double pregrasp_offset = 0.15;
     double pregrasp_x = obj_x + obj_height / 2.0;
     double pregrasp_y = obj_y - obj_width / 2.0;
     double pregrasp_z = obj_z + pregrasp_offset;
@@ -290,7 +296,7 @@ public:
     double approach_distance = -(pregrasp_offset - obj_thickness);
 
     RCLCPP_INFO(LOGGER, "-- Going to Pregrasp Position...");
-    rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
+    // rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     // setup the goal pose target
     RCLCPP_INFO(LOGGER, "Preparing Goal Pose Trajectory...");
     // setup_goal_pose_target(+0.343, +0.132, +0.264, -1.000, +0.000, +0.000,
@@ -301,6 +307,9 @@ public:
     setup_goal_pose_target(pregrasp_x, pregrasp_y, pregrasp_z, -1.000, +0.000,
                            +0.000, +0.000);
 
+    RCLCPP_INFO(LOGGER, " >>>> %f, %f, %f", pregrasp_x, pregrasp_y, pregrasp_z);
+    RCLCPP_INFO(LOGGER, " >>>> 0.340, -0.020, 0.264");
+
     // plan and execute the trajectory
     RCLCPP_INFO(LOGGER, "Planning Goal Pose Trajectory...");
     plan_trajectory_kinematics();
@@ -309,7 +318,7 @@ public:
 
     // open the gripper
     RCLCPP_INFO(LOGGER, "-- Opening Gripper...");
-    rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
+    // rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     // setup the gripper target by pose name
     RCLCPP_INFO(LOGGER, "Preparing Gripper Value...");
     // setup_named_pose_gripper("open");
@@ -322,7 +331,7 @@ public:
     RCLCPP_INFO(LOGGER, "Gripper Opened");
 
     RCLCPP_INFO(LOGGER, "-- Approaching...");
-    rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
+    // rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     // setup the cartesian target
     RCLCPP_INFO(LOGGER, "Preparing Cartesian Trajectory...");
     // setup_waypoints_target(+0.000, +0.000, -0.078);
@@ -338,24 +347,43 @@ public:
 
     // close the gripper
     RCLCPP_INFO(LOGGER, "-- Closing Gripper...");
-    rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
+    // rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     // setup the gripper joint value
     RCLCPP_INFO(LOGGER, "Preparing Gripper Value...");
     RCLCPP_INFO(LOGGER, "Planning Gripper Action...");
     RCLCPP_INFO(LOGGER, "Executing Gripper Action...");
     // for (double i = 0.50; i <= 0.6525; i += 0.030) {
-    for (double i = 0.60; i <= 0.6525; i += 0.020) {
+    // for (double i = 0.60; i <= 0.652; i += 0.013) {
+    // for (double i = 0.60; i <= 0.646; i += 0.0092) {
+    for (double i = 0.60; i <= 0.6455; i += 0.0091) {
+    // for (double i = 0.60; i <= 0.645; i += 0.009) {
+      // for (double i = 0.60; i <= 0.638; i += 0.0065) {
+      // for (double i = 0.60; i <= 0.635; i += 0.012) {
       setup_joint_value_gripper(i);
       plan_trajectory_gripper();
       execute_trajectory_gripper();
-      rclcpp::sleep_for(std::chrono::milliseconds(50));
+      rclcpp::sleep_for(std::chrono::milliseconds(850));
     }
+    // double value = 0.40;
+    // // double target = 0.6525;
+    // double target = 0.650;
+    // double alpha = 0.50; // smaller = smoother & slower near target
+
+    // while (std::abs(target - value) > 1e-4) {
+    //   value += (target - value) * alpha;
+
+    //   setup_joint_value_gripper(value);
+    //   plan_trajectory_gripper();
+    //   execute_trajectory_gripper();
+
+    //   rclcpp::sleep_for(std::chrono::milliseconds(10));
+    // }
     RCLCPP_INFO(LOGGER, "Gripper Closed");
 
     remove_table_collision_object();
 
     RCLCPP_INFO(LOGGER, "-- Retreating...");
-    rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
+    //   rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     // setup the cartesian target
     RCLCPP_INFO(LOGGER, "Preparing Cartesian Trajectory...");
     // setup_waypoints_target(+0.000, +0.000, +0.060);
@@ -367,28 +395,32 @@ public:
     execute_trajectory_cartesian();
 
     RCLCPP_INFO(LOGGER, "-- Going to Place Position...");
-    rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
+    //   rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     // get current state of robot
     current_state_robot_ = move_group_robot_->getCurrentState(10);
     current_state_robot_->copyJointGroupPositions(joint_model_group_robot_,
                                                   joint_group_positions_robot_);
     // setup the joint value target
     RCLCPP_INFO(LOGGER, "-- Preparing Joint Value Trajectory...");
-    rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
+    //   rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     setup_joint_value_target(
         +3.1416, joint_group_positions_robot_[1],
         joint_group_positions_robot_[2], joint_group_positions_robot_[3],
         joint_group_positions_robot_[4], joint_group_positions_robot_[5]);
+    // setup_joint_value_target(
+    //     -1.5708, joint_group_positions_robot_[1],
+    //     joint_group_positions_robot_[2], joint_group_positions_robot_[3],
+    //     joint_group_positions_robot_[4], joint_group_positions_robot_[5]);
     // plan and execute the trajectory
     RCLCPP_INFO(LOGGER, "-- Planning Joint Value Trajectory...");
-    rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
+    //   rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     plan_trajectory_kinematics();
     RCLCPP_INFO(LOGGER, "Executing Joint Value Trajectory...");
     execute_trajectory_kinematics();
 
     // open the gripper
     RCLCPP_INFO(LOGGER, "-- Opening Gripper...");
-    rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
+    //   rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     // setup the gripper target by pose name
     RCLCPP_INFO(LOGGER, "Preparing Gripper Value...");
     // setup_named_pose_gripper("open");
@@ -401,7 +433,7 @@ public:
     RCLCPP_INFO(LOGGER, "Gripper Opened");
 
     // wait for few seconds
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    //   std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
     RCLCPP_INFO(LOGGER, "-- Going to Home Position...");
     rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
