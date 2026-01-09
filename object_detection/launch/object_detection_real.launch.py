@@ -9,10 +9,10 @@ from launch.conditions import IfCondition, UnlessCondition
 
 def generate_launch_description():
 
-    use_sim_time = LaunchConfiguration('use_sim_time', default='True')
+    use_sim_time = LaunchConfiguration('use_sim_time', default='False')
 
-    rviz_config = os.path.join(get_package_share_directory('my_moveit_config'), 'config', 'moveit_testing.rviz')
-    # rviz_config = os.path.join(get_package_share_directory('my_moveit_config'), 'config', 'moveit.rviz')
+    # rviz_config = os.path.join(get_package_share_directory('my_moveit_config'), 'config', 'moveit_testing.rviz')
+    rviz_config = os.path.join(get_package_share_directory('real_moveit_config'), 'config', 'moveit.rviz')
     
     static_tf = Node(
         package='tf2_ros',
@@ -36,7 +36,7 @@ def generate_launch_description():
 
     scripted_static_tf = Node(
             package='object_detection',
-            executable='static_transform_publisher',
+            executable='static_transform_publisher_real',
             output='screen',
             name='arm2ptc_static_tf',
             parameters=[{'use_sim_time': use_sim_time}],
@@ -46,9 +46,9 @@ def generate_launch_description():
     
     obj_detect = Node(
             package='object_detection',
-            executable='object_detection',
+            executable='object_detection_real',
             output='screen',
-            name='object_detection',
+            name='object_detection_real',
             parameters=[{'use_sim_time': use_sim_time}],
             emulate_tty=True,
         )

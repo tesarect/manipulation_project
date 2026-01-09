@@ -8,10 +8,10 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
 
-    config_pkg = get_package_share_directory('sim_real_config')
-    param_config = pthJoin(config_pkg, 'config', 'real.yaml')
+    # config_pkg = get_package_share_directory('sim_real_config')
+    # param_config = pthJoin(config_pkg, 'config', 'real.yaml')
 
-    moveit_config = MoveItConfigsBuilder("name", package_name="real_moveit_config").to_moveit_configs()
+    moveit_config = MoveItConfigsBuilder("ur3e", package_name="real_moveit_config").to_moveit_configs()
     
     # Move Group Node
     move_group_node = Node(

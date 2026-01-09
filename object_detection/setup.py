@@ -23,8 +23,10 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'static_transform_publisher_real = object_detection.static_transform_publisher_real:main',
             'static_transform_publisher = object_detection.static_transform_publisher:main',
-            'object_detection = object_detection.object_detection:main'
+            'object_detection_real = object_detection.object_detection_real:main',
+            'object_detection = object_detection.object_detection:main',
         ],
     },
 )

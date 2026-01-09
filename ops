@@ -1,0 +1,240 @@
+Published 1 bench plane markers
+[object_detection_real-3] [INFO] [1767973216.381677941] [object_detection_real]: Published 1 objects on flat surface markers!
+[rviz2-2] [WARN] [1767973216.461399550] [moveit_planning_scene.planning_scene]: Setting the scene for model 'name' but model 'ur3e' is loaded.
+[rviz2-2] [WARN] [1767973216.711360218] [moveit_planning_scene.planning_scene]: Setting the scene for model 'name' but model 'ur3e' is loaded.
+[object_detection_real-3] [INFO] [1767973216.946944989] [object_detection_real]: Number of inliers: 14641
+[object_detection_real-3] [INFO] [1767973216.947365779] [object_detection_real]: Plane coefficients: [0.0045846509747207165, -0.019590429961681366, 0.9997975826263428, 0.03316757455468178]
+[rviz2-2] [WARN] [1767973216.961468806] [moveit_planning_scene.planning_scene]: Setting the scene for model 'name' but model 'ur3e' is loaded.
+[object_detection_real-3] [INFO] [1767973217.038396575] [object_detection_real]: Processing Bench Surface cluster 1...
+[object_detection_real-3] [INFO] [1767973217.040058376] [object_detection_real]: Bench Surface cluster 1 has 14641 points.
+[object_detection_real-3] [INFO] [1767973217.040715065] [object_detection_real]: Centroid of Bench Surface cluster 1: [ 0.5159094   0.25791126 -0.03048419]
+[object_detection_real-3] [INFO] [1767973217.041305683] [object_detection_real]: Dimensions of Bench Surface cluster 1: [0.5680492  0.37647524 0.01604876]
+[object_detection_real-3] [INFO] [1767973217.042673616] [object_detection_real]: Processing Object cluster 1...
+[object_detection_real-3] [INFO] [1767973217.043164673] [object_detection_real]: Object cluster 1 has 200 points.
+[object_detection_real-3] [INFO] [1767973217.043648521] [object_detection_real]: Centroid of Object cluster 1: [0.34636658 0.12151951 0.02228366]
+[object_detection_real-3] [INFO] [1767973217.044115284] [object_detection_real]: Dimensions of Object cluster 1: [0.02366242 0.01468834 0.0456777 ]
+[object_detection_real-3] [INFO] [1767973217.044671488] [object_detection_real]: Published 1 bench plane markers
+[object_detection_real-3] [INFO] [1767973217.045833048] [object_detection_real]: Published 1 objects on flat surface markers!
+[rviz2-2] [WARN] [1767973217.211492556] [moveit_planning_scene.planning_scene]: Setting the scene for model 'name' but model 'ur3e' is loaded.
+[rviz2-2] [WARN] [1767973217.461589947] [moveit_planning_scene.planning_scene]: Setting the scene for model 'name' but model 'ur3e' is loaded.
+[object_detection_real-3] [INFO] [1767973217.599397067] [object_detection_real]: Number of inliers: 14611
+[object_detection_real-3] [INFO] [1767973217.599990514] [object_detection_real]: Plane coefficients: [0.0045007867738604546, -0.019500955939292908, 0.9997997283935547, 0.03317819535732269]
+[object_detection_real-3] [INFO] [1767973217.692514904] [object_detection_real]: Processing Bench Surface cluster 1...
+[object_detection_real-3] [INFO] [1767973217.694143685] [object_detection_real]: Bench Surface cluster 1 has 14611 points.
+[object_detection_real-3] [INFO] [1767973217.694759664] [object_detection_real]: Centroid of Bench Surface cluster 1: [ 0.51588434  0.2578044  -0.03047715]
+[object_detection_real-3] [INFO] [1767973217.695280554] [object_detection_real]: Dimensions of Bench Surface cluster 1: [0.5708567  0.37598032 0.01494106]
+[object_detection_real-3] [INFO] [1767973217.696729112] [object_detection_real]: Processing Object cluster 1...
+[object_detection_real-3] [INFO] [1767973217.697193036] [object_detection_real]: Object cluster 1 has 201 points.
+[object_detection_real-3] [INFO] [1767973217.697706644] [object_detection_real]: Centroid of Object cluster 1: [0.3460739  0.12049606 0.02205593]
+[object_detection_real-3] [INFO] [1767973217.698213328] [object_detection_real]: Dimensions of Object cluster 1: [0.02309519 0.01290658 0.04525365]
+[object_detection_real-3] [INFO] [1767973217.698778415] [object_detection_real]: Published 1 bench plane markers
+[object_detection_real-3] [INFO] [1767973217.699487676] [object_detection_real]: Published 1 objects on flat surface markers!
+[rviz2-2] [WARN] [1767973217.711717800] [moveit_planning_scene.planning_scene]: Setting the scene for model 'name' but model 'ur3e' is loaded.
+[rviz2-2] [WARN] [1767973217.961748108] [moveit_planning_scene.planning_scene]: Setting the scene for model 'name' but model 'ur3e' is loaded.
+[rviz2-2] [WARN] [1767973218.211856843] [moveit_planning_scene.planning_scene]: Setting the scene for model 'name' but model 'ur3e' is loaded.
+[object_detection_real-3] [INFO] [1767973218.269287509] [object_detection_real]: Number of inliers: 14622
+[object_detection_real-3] [INFO] [1767973218.269781844] [object_detection_real]: Plane coefficients: [0.004782048054039478, -0.019512701779603958, 0.9997982382774353, 0.033036742359399796]
+[object_detection_real-3] [INFO] [1767973218.359528064] [object_detection_real]: Processing Bench Surface cluster 1...
+[object_detection_real-3] [INFO] [1767973218.361294983] [object_detection_real]: Bench Surface cluster 1 has 14622 points.
+[object_detection_real-3] [INFO] [1767973218.361987812] [object_detection_real]: Centroid of Bench Surface cluster 1: [ 0.51567984  0.25782618 -0.03048483]
+[object_detection_real-3] [INFO] [1767973218.362599137] [object_detection_real]: Dimensions of Bench Surface cluster 1: [0.57173294 0.37587807 0.01538968]
+[object_detection_real-3] [INFO] [1767973218.364034745] [object_detection_real]: Processing Object cluster 1...
+[object_detection_real-3] [INFO] [1767973218.364622065] [object_detection_real]: Object cluster 1 has 204 points.
+[object_detection_real-3] [INFO] [1767973218.365257190] [object_detection_real]: Centroid of Object cluster 1: [0.3460346  0.12082002 0.0222981 ]
+[object_detection_real-3] [INFO] [1767973218.365898764] [object_detection_real]: Dimensions of Object cluster 1: [0.02309519 0.0132737  0.04536575]
+[object_detection_real-3] [INFO] [1767973218.366571117] [object_detection_real]: Published 1 bench plane markers
+[object_detection_real-3] [INFO] [1767973218.367360646] [object_detection_real]: Published 1 objects on flat surface markers!
+[rviz2-2] [WARN] [1767973218.462024654] [moveit_planning_scene.planning_scene]: Setting the scene for model 'name' but model 'ur3e' is loaded.
+[rviz2-2] [WARN] [1767973218.712038780] [moveit_planning_scene.planning_scene]: Setting the scene for model 'name' but model 'ur3e' is loaded.
+[rviz2-2] [WARN] [1767973218.962157407] [moveit_planning_scene.planning_scene]: Setting the scene for model 'name' but model 'ur3e' is loaded.
+[object_detection_real-3] [INFO] [1767973219.173050245] [object_detection_real]: Number of inliers: 14662
+[object_detection_real-3] [INFO] [1767973219.173663275] [object_detection_real]: Plane coefficients: [0.004847760312259197, -0.019703274592757225, 0.9997941255569458, 0.033055733889341354]
+[rviz2-2] [WARN] [1767973219.212170512] [moveit_planning_scene.planning_scene]: Setting the scene for model 'name' but model 'ur3e' is loaded.
+[object_detection_real-3] [INFO] [1767973219.281163063] [object_detection_real]: Processing Bench Surface cluster 1...
+[object_detection_real-3] [INFO] [1767973219.283911842] [object_detection_real]: Bench Surface cluster 1 has 14662 points.
+[object_detection_real-3] [INFO] [1767973219.284983486] [object_detection_real]: Centroid of Bench Surface cluster 1: [ 0.51594216  0.25810003 -0.03047748]
+[object_detection_real-3] [INFO] [1767973219.285861676] [object_detection_real]: Dimensions of Bench Surface cl
+
+
+
+.launch.py
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-01-09-15-46-54-174211-1_xterm-25269
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [pick_and_place_perception_real-1]: process started with pid [25270]
+[pick_and_place_perception_real-1] [INFO] [1767973614.803294328] [pick_and_place_real_node]: Initializing Class:Pick And Place Trajectory...
+[pick_and_place_perception_real-1] [WARN] [1767973614.803558288] [rcl.logging_rosout]: Publisher already registered for provided node name. If this is due to multiple nodes with the same name then all logs for that logger name will go out over the existing publisher. As soon as any node with that name is destructed it will unregister the publisher, preventing any further logs for that name from being published on the rosout topic.
+[pick_and_place_perception_real-1] [INFO] [1767973614.809764112] [pick_and_place_real_node]: Subscribed to /object_detected topic & /surface_detected
+[pick_and_place_perception_real-1] [INFO] [1767973614.872901969] [moveit_rdf_loader.rdf_loader]: Loaded robot model in 0.0628808 seconds
+[pick_and_place_perception_real-1] [INFO] [1767973614.872943250] [moveit_robot_model.robot_model]: Loading robotmodel 'name'...
+[pick_and_place_perception_real-1] [INFO] [1767973614.878744863] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.571, W=0.377
+[pick_and_place_perception_real-1] [INFO] [1767973614.878834291] [pick_and_place_real_node]: ✓ Object detected at position: [0.346, 0.121, 0.022]
+[pick_and_place_perception_real-1] [INFO] [1767973614.878853992] [pick_and_place_real_node]: ✓ Object dimensions: H=0.023, W=0.017, T=0.046
+[pick_and_place_perception_real-1] [INFO] [1767973614.915195233] [move_group_interface]: Ready to take commands for planning group ur_manipulator.
+[pick_and_place_perception_real-1] [INFO] [1767973614.925793325] [move_group_interface]: Ready to take commands for planning group gripper.
+[pick_and_place_perception_real-1] [INFO] [1767973614.926393944] [moveit_ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[pick_and_place_perception_real-1] [INFO] [1767973615.273520955] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.572, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767973615.586682769] [pick_and_place_real_node]: Planning Frame: world
+[pick_and_place_perception_real-1] [INFO] [1767973615.586734422] [pick_and_place_real_node]: End Effector Link: tool0
+[pick_and_place_perception_real-1] [INFO] [1767973615.586745958] [pick_and_place_real_node]: Available Planning Groups:
+[pick_and_place_perception_real-1] [INFO] [1767973615.586759045] [pick_and_place_real_node]: Group 0: gripper
+[pick_and_place_perception_real-1] [INFO] [1767973615.586769030] [pick_and_place_real_node]: Group 1: ur_manipulator
+[pick_and_place_perception_real-1] [INFO] [1767973615.767412471] [pick_and_place_real_node]: Class Initialized: Pick And Place Trajectory
+[pick_and_place_perception_real-1] [INFO] [1767973615.767462818] [pick_and_place_real_node]: Planning and Executing Pick And Place Trajectory...
+[pick_and_place_perception_real-1] [INFO] [1767973615.767477323] [pick_and_place_real_node]: Waiting for surfacedetection...
+[pick_and_place_perception_real-1] [INFO] [1767973615.767491814] [pick_and_place_real_node]: Adding table collision object [0.572 x 0.376 x 0.050]
+[pick_and_place_perception_real-1] [INFO] [1767973615.931601246] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.568, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767973616.268211131] [pick_and_place_real_node]: ✓ Table added to planning scene
+[pick_and_place_perception_real-1] [INFO] [1767973616.268266255] [pick_and_place_real_node]: Waiting for object detection...
+[pick_and_place_perception_real-1] [INFO] [1767973616.268282384] [pick_and_place_real_node]: Object detection received!
+[pick_and_place_perception_real-1] [INFO] [1767973616.268295900] [pick_and_place_real_node]: -- Going to Pregrasp Position...
+[pick_and_place_perception_real-1] [INFO] [1767973616.268310000] [pick_and_place_real_node]: Preparing Goal PoseTrajectory...
+[pick_and_place_perception_real-1] [INFO] [1767973616.268362846] [pick_and_place_real_node]:  >>>> 0.360981, 0.111823, 0.281943, -1.000, +0.000, +0.000, +0.000
+[pick_and_place_perception_real-1] [INFO] [1767973616.268383203] [pick_and_place_real_node]:  >>>> 0.375, 0.132,0.262, -1.000, +0.000, +0.000, +0.000
+[pick_and_place_perception_real-1] [INFO] [1767973616.268395796] [pick_and_place_real_node]: Planning Goal Pose Trajectory...
+[pick_and_place_perception_real-1] [INFO] [1767973616.268571644] [move_group_interface]: MoveGroup action client/server ready
+[pick_and_place_perception_real-1] [INFO] [1767973616.269304958] [move_group_interface]: Planning request accepted
+[pick_and_place_perception_real-1] [INFO] [1767973616.844903410] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.570, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767973617.233221735] [move_group_interface]: Planning request complete!
+[pick_and_place_perception_real-1] [INFO] [1767973617.269838998] [move_group_interface]: time taken to generate plan: 0.244475 seconds
+[pick_and_place_perception_real-1] [INFO] [1767973617.269900323] [pick_and_place_real_node]: Executing Goal PoseTrajectory...
+[pick_and_place_perception_real-1] [INFO] [1767973617.270775653] [move_group_interface]: Execute request accepted
+[pick_and_place_perception_real-1] [INFO] [1767973617.299873225] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.571, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767973617.944397175] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.574, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767973618.611918062] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.572, W=0.375
+[pick_and_place_perception_real-1] [INFO] [1767973619.501443102] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.571, W=0.375
+[pick_and_place_perception_real-1] [INFO] [1767973619.952600224] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.570, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767973620.601863070] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.570, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767973621.265886158] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.569, W=0.375
+[pick_and_place_perception_real-1] [INFO] [1767973622.194191152] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.571, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767973622.627674779] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.572, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767973623.288442154] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.031], L=0.571, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767973623.956131030] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.571, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767973624.839407616] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.569, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767973625.318279341] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.570, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767973626.112320192] [move_group_interface]: Execute request success!
+[pick_and_place_perception_real-1] [INFO] [1767973626.177373496] [pick_and_place_real_node]: Robot Kinematics Trajectory Success !
+[pick_and_place_perception_real-1] [INFO] [1767973626.177410344] [pick_and_place_real_node]: -- Opening Gripper...
+[pick_and_place_perception_real-1] [INFO] [1767973626.177422438] [pick_and_place_real_node]: Preparing Gripper Value...
+[pick_and_place_perception_real-1] [INFO] [1767973626.177452094] [pick_and_place_real_node]: Planning Gripper Action...
+[pick_and_place_perception_real-1] [INFO] [1767973626.177584894] [move_group_interface]: MoveGroup action client/server ready
+[pick_and_place_perception_real-1] [INFO] [1767973626.178538817] [move_group_interface]: Planning request accepted
+[pick_and_place_perception_real-1] [INFO] [1767973626.224527322] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.257, -0.031], L=0.574, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767973626.353545152] [move_group_interface]: Planning request complete!
+[pick_and_place_perception_real-1] [INFO] [1767973626.377935002] [move_group_interface]: time taken to generate plan: 0.0377301 seconds
+[pick_and_place_perception_real-1] [INFO] [1767973626.378019305] [pick_and_place_real_node]: Executing Gripper Action...
+[pick_and_place_perception_real-1] [INFO] [1767973626.379448793] [move_group_interface]: Execute request accepted
+[pick_and_place_perception_real-1] [INFO] [1767973626.641622726] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.031], L=0.577, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767973627.111008885] [move_group_interface]: Execute request success!
+[pick_and_place_perception_real-1] [INFO] [1767973627.179586452] [pick_and_place_real_node]: Gripper Action Command Success !
+[pick_and_place_perception_real-1] [INFO] [1767973627.179634093] [pick_and_place_real_node]: Gripper Opened
+[pick_and_place_perception_real-1] [INFO] [1767973627.181731863] [pick_and_place_real_node]: Class Terminated: Pick And Place Trajectory
+[INFO] [pick_and_place_perception_real-1]: process has finished cleanly [pid 25270]
+
+user:~/ros2_ws$ source ~/ros2_ws/install/setup.bash && ros2 launch moveit2_scripts pick_and_place_perception_real.launch.py
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-01-09-15-54-02-402167-1_xterm-31463
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [pick_and_place_perception_real-1]: process started with pid [31464]
+[pick_and_place_perception_real-1] [INFO] [1767974043.065540999] [pick_and_place_real_node]: Initializing Class:Pick And Place Trajectory...
+[pick_and_place_perception_real-1] [WARN] [1767974043.065766351] [rcl.logging_rosout]: Publisher already registered for provided node name. If this is due to multiple nodes with the same name then all logs for that logger name will go out over the existing publisher. As soon as any node with that name is destructed it will unregister the publisher, preventing any further logs for that name from being published on the rosout topic.
+[pick_and_place_perception_real-1] [INFO] [1767974043.072796914] [pick_and_place_real_node]: Subscribed to /object_detected topic & /surface_detected
+[pick_and_place_perception_real-1] [INFO] [1767974043.122928938] [moveit_rdf_loader.rdf_loader]: Loaded robot model in 0.0494261 seconds
+[pick_and_place_perception_real-1] [INFO] [1767974043.122985852] [moveit_robot_model.robot_model]: Loading robotmodel 'name'...
+[pick_and_place_perception_real-1] [INFO] [1767974043.173448956] [move_group_interface]: Ready to take commands for planning group ur_manipulator.
+[pick_and_place_perception_real-1] [INFO] [1767974043.183531834] [move_group_interface]: Ready to take commands for planning group gripper.
+[pick_and_place_perception_real-1] [INFO] [1767974043.184178670] [moveit_ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[pick_and_place_perception_real-1] [INFO] [1767974043.471835118] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.031], L=0.572, W=0.375
+[pick_and_place_perception_real-1] [INFO] [1767974043.471930664] [pick_and_place_real_node]: ✓ Object detected at position: [0.333, 0.102, 0.148]
+[pick_and_place_perception_real-1] [INFO] [1767974043.471951072] [pick_and_place_real_node]: ✓ Object dimensions: H=0.179, W=0.111, T=0.126
+[pick_and_place_perception_real-1] [INFO] [1767974043.714479587] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.577, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974043.808373508] [pick_and_place_real_node]: Planning Frame: world
+[pick_and_place_perception_real-1] [INFO] [1767974043.808411513] [pick_and_place_real_node]: End Effector Link: tool0
+[pick_and_place_perception_real-1] [INFO] [1767974043.808422812] [pick_and_place_real_node]: Available Planning Groups:
+[pick_and_place_perception_real-1] [INFO] [1767974043.808437009] [pick_and_place_real_node]: Group 0: gripper
+[pick_and_place_perception_real-1] [INFO] [1767974043.808447837] [pick_and_place_real_node]: Group 1: ur_manipulator
+[pick_and_place_perception_real-1] [INFO] [1767974043.989783973] [pick_and_place_real_node]: Class Initialized: Pick And Place Trajectory
+[pick_and_place_perception_real-1] [INFO] [1767974043.989827936] [pick_and_place_real_node]: Planning and Executing Pick And Place Trajectory...
+[pick_and_place_perception_real-1] [INFO] [1767974043.989839845] [pick_and_place_real_node]: Waiting for surfacedetection...
+[pick_and_place_perception_real-1] [INFO] [1767974043.989848198] [pick_and_place_real_node]: Adding table collision object [0.577 x 0.376 x 0.050]
+[pick_and_place_perception_real-1] [INFO] [1767974044.121473899] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.572, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974044.437928041] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.257, -0.031], L=0.576, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974044.490597134] [pick_and_place_real_node]: ✓ Table added to planning scene
+[pick_and_place_perception_real-1] [INFO] [1767974044.490640819] [pick_and_place_real_node]: Waiting for object detection...
+[pick_and_place_perception_real-1] [INFO] [1767974044.490652798] [pick_and_place_real_node]: Object detection received!
+[pick_and_place_perception_real-1] [INFO] [1767974044.490661458] [pick_and_place_real_node]: -- Going to Pregrasp Position...
+[pick_and_place_perception_real-1] [INFO] [1767974044.490670325] [pick_and_place_real_node]: Preparing Goal PoseTrajectory...
+[pick_and_place_perception_real-1] [INFO] [1767974044.490715902] [pick_and_place_real_node]:  Obtained >>>> 0.360018, 0.130648, 0.281500, -1.000, +0.000, +0.000, +0.000
+[pick_and_place_perception_real-1] [INFO] [1767974044.490729875] [pick_and_place_real_node]:  Original >>>> 0.375, 0.132, 0.262, -1.000, +0.000, +0.000, +0.000
+[pick_and_place_perception_real-1] [INFO] [1767974044.490737910] [pick_and_place_real_node]:  approach_dist  >>>> -0.106758
+[pick_and_place_perception_real-1] [INFO] [1767974044.490746397] [pick_and_place_real_node]: Planning Goal Pose Trajectory...
+[pick_and_place_perception_real-1] [INFO] [1767974044.490896655] [move_group_interface]: MoveGroup action client/server ready
+[pick_and_place_perception_real-1] [INFO] [1767974044.491672066] [move_group_interface]: Planning request accepted
+[pick_and_place_perception_real-1] [INFO] [1767974044.830924910] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.031], L=0.574, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974045.082278779] [move_group_interface]: Planning request complete!
+[pick_and_place_perception_real-1] [INFO] [1767974045.083243460] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.031], L=0.573, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974045.094872157] [move_group_interface]: time taken to generate plan: 0.101736 seconds
+[pick_and_place_perception_real-1] [INFO] [1767974045.094957397] [pick_and_place_real_node]: Executing Goal PoseTrajectory...
+[pick_and_place_perception_real-1] [INFO] [1767974045.095784395] [move_group_interface]: Execute request accepted
+[pick_and_place_perception_real-1] [INFO] [1767974045.451611678] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.031], L=0.581, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974045.697103367] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.573, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974046.107584364] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.031], L=0.575, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974046.756037116] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.572, W=0.377
+[pick_and_place_perception_real-1] [INFO] [1767974047.035748376] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.572, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974047.411074096] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.568, W=0.377
+[pick_and_place_perception_real-1] [INFO] [1767974048.098353157] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.571, W=0.375
+[pick_and_place_perception_real-1] [INFO] [1767974048.309088325] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.569, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974048.842393835] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.571, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974049.069755004] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.569, W=0.375
+[pick_and_place_perception_real-1] [INFO] [1767974049.475842145] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.572, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974050.143402970] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.571, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974050.755204803] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.571, W=0.375
+[pick_and_place_perception_real-1] [INFO] [1767974051.426103238] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.569, W=0.375
+[pick_and_place_perception_real-1] [INFO] [1767974052.072495461] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.570, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974052.944733077] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.570, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974053.424915300] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.257, -0.030], L=0.569, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974053.936808882] [move_group_interface]: Execute request success!
+[pick_and_place_perception_real-1] [INFO] [1767974054.009034160] [pick_and_place_real_node]: Robot Kinematics Trajectory Success !
+[pick_and_place_perception_real-1] [INFO] [1767974054.009092972] [pick_and_place_real_node]: -- Opening Gripper...
+[pick_and_place_perception_real-1] [INFO] [1767974054.009107281] [pick_and_place_real_node]: Preparing Gripper Value...
+[pick_and_place_perception_real-1] [INFO] [1767974054.009143016] [pick_and_place_real_node]: Planning Gripper Action...
+[pick_and_place_perception_real-1] [INFO] [1767974054.009309133] [move_group_interface]: MoveGroup action client/server ready
+[pick_and_place_perception_real-1] [INFO] [1767974054.011892438] [move_group_interface]: Planning request accepted
+[pick_and_place_perception_real-1] [INFO] [1767974054.185311625] [move_group_interface]: Planning request complete!
+[pick_and_place_perception_real-1] [INFO] [1767974054.209691059] [move_group_interface]: time taken to generate plan: 0.029942 seconds
+[pick_and_place_perception_real-1] [INFO] [1767974054.209782013] [pick_and_place_real_node]: Executing Gripper Action...
+[pick_and_place_perception_real-1] [INFO] [1767974054.211097861] [move_group_interface]: Execute request accepted
+[pick_and_place_perception_real-1] [INFO] [1767974054.370836525] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.572, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974054.806172716] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.570, W=0.375
+[pick_and_place_perception_real-1] [INFO] [1767974054.937959588] [move_group_interface]: Execute request success!
+[pick_and_place_perception_real-1] [INFO] [1767974055.010932919] [pick_and_place_real_node]: Gripper Action Command Success !
+[pick_and_place_perception_real-1] [INFO] [1767974055.010971335] [pick_and_place_real_node]: Gripper Opened
+[pick_and_place_perception_real-1] [INFO] [1767974055.010977712] [pick_and_place_real_node]: -- Approaching...
+[pick_and_place_perception_real-1] [INFO] [1767974055.010982699] [pick_and_place_real_node]: Preparing CartesianTrajectory...
+[pick_and_place_perception_real-1] [INFO] [1767974055.010987040] [pick_and_place_real_node]:  >>>>  actual approach distance: -0.060
+[pick_and_place_perception_real-1] [INFO] [1767974055.010992132] [pick_and_place_real_node]:  >>>> current approach distance: -0.106758
+[pick_and_place_perception_real-1] [INFO] [1767974055.100500183] [pick_and_place_real_node]: Planning Cartesian Trajectory...
+[pick_and_place_perception_real-1] [INFO] [1767974055.106221790] [pick_and_place_real_node]: Executing CartesianTrajectory...
+[pick_and_place_perception_real-1] [INFO] [1767974055.106769236] [move_group_interface]: Execute request accepted
+[pick_and_place_perception_real-1] [INFO] [1767974055.446492935] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.569, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974056.378443306] [pick_and_place_real_node]: ✓ Surface at [0.516, 0.258, -0.030], L=0.572, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974056.820824832] [pick_and_place_real_node]: ✓ Surface at [0.517, 0.259, -0.031], L=0.570, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974057.477531700] [pick_and_place_real_node]: ✓ Surface at [0.517, 0.258, -0.030], L=0.571, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974058.126773084] [pick_and_place_real_node]: ✓ Surface at [0.517, 0.258, -0.031], L=0.570, W=0.375
+[pick_and_place_perception_real-1] [INFO] [1767974058.804351645] [pick_and_place_real_node]: ✓ Surface at [0.517, 0.258, -0.031], L=0.569, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974058.829403879] [move_group_interface]: Execute request aborted
+[pick_and_place_perception_real-1] [ERROR] [1767974058.909057923] [move_group_interface]: MoveGroupInterface::execute() failed or timeout reached
+[pick_and_place_perception_real-1] [INFO] [1767974058.909106477] [pick_and_place_real_node]: Robot Cartesian Trajectory Success !
+[pick_and_place_perception_real-1] [INFO] [1767974058.909119859] [pick_and_place_real_node]: -- Closing Gripper...
+[pick_and_place_perception_real-1] [INFO] [1767974058.909129357] [pick_and_place_real_node]: Preparing Gripper Value...
+[pick_and_place_perception_real-1] [INFO] [1767974058.909161730] [pick_and_place_real_node]: Planning Gripper Action...
+[pick_and_place_perception_real-1] [INFO] [1767974058.909291506] [move_group_interface]: MoveGroup action client/server ready
+[pick_and_place_perception_real-1] [INFO] [1767974058.909779250] [move_group_interface]: Planning request accepted
+[pick_and_place_perception_real-1] [INFO] [1767974059.075473090] [move_group_interface]: Planning request complete!
+[pick_and_place_perception_real-1] [INFO] [1767974059.109584749] [move_group_interface]: time taken to generate plan: 0.025169 seconds
+[pick_and_place_perception_real-1] [INFO] [1767974059.109633617] [pick_and_place_real_node]: Executing Gripper Action...
+[pick_and_place_perception_real-1] [INFO] [1767974059.110325651] [move_group_interface]: Execute request accepted
+[pick_and_place_perception_real-1] [INFO] [1767974059.461435365] [pick_and_place_real_node]: ✓ Surface at [0.517, 0.258, -0.031], L=0.571, W=0.376
+[pick_and_place_perception_real-1] [INFO] [1767974060.065298256] [move_group_interface]: Execute request success!
+[pick_and_place_perception_real-1] [INFO] [1767974060.110627189] [pick_and_place_real_node]: Gripper Action Command Success !
+[pick_and_place_perception_real-1] [INFO] [1767974060.110659122] [pick_and_place_real_node]: Gripper Closed
+[pick_and_place_perception_real-1] [INFO] [1767974060.113197081] [pick_and_place_real_node]: Class Terminated: Pick And Place Trajectory
+[INFO] [pick_and_place_perception_real-1]: process has finished cleanly [pid 31464]

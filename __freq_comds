@@ -5,9 +5,13 @@ ros2 control list_controllers
 ros2 topic echo /joint_states --once
 
 source ~/ros2_ws/install/setup.bash && ros2 launch my_moveit_config move_group.launch.py
+source ~/ros2_ws/install/setup.bash && ros2 launch real_moveit_config move_group.launch.py
+
 source ~/ros2_ws/install/setup.bash && ros2 launch object_detection object_detection.launch.py
+source ~/ros2_ws/install/setup.bash && ros2 launch object_detection object_detection_real.launch.py
 
 source ~/ros2_ws/install/setup.bash && ros2 launch moveit2_scripts pick_and_place_perception.launch.py
+source ~/ros2_ws/install/setup.bash && ros2 launch moveit2_scripts pick_and_place_perception_real.launch.py
 source ~/ros2_ws/install/setup.bash && ros2 launch moveit2_scripts pick_and_place_perception.launch.py > output.log 2>&1   
 
 cd ~/ros2_ws && colcon build --packages-select moveit2_scripts && source install/setup.bash
@@ -16,6 +20,15 @@ cd ~/ros2_ws && colcon build --packages-select object_detection my_moveit_config
 cd ~/ros2_ws && colcon build --packages-select moveit2_scripts object_detection my_moveit_config && source install/setup.bash
 
 ros2 run rqt_console rqt_console
+ros2 run tf2_tools view_frames
+
+cd ~/ros2_ws/src/zenoh-pointcloud/
+./install_zenoh.sh
+cd ~/ros2_ws/src/zenoh-pointcloud/init/
+./rosject.sh
+
+TOT- real:
+find camera frame name and update in static tf file.
 
 ros2 pkg create --build-type ament_python object_detection
 cd ~/ros2_ws/

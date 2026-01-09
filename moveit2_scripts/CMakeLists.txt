@@ -63,11 +63,20 @@ ament_target_dependencies(pick_and_place_perception
     ${MOVEIT_DEPS}
 	custom_msgs)
 
+add_executable(pick_and_place_perception_real
+    src/pick_and_place_perception_real.cpp)
+target_include_directories(pick_and_place_perception_real
+    PUBLIC include)
+ament_target_dependencies(pick_and_place_perception_real
+    ${MOVEIT_DEPS}
+	custom_msgs)
+
 # Install the executable
 install(TARGETS 
 	pick_and_place
 	pick_and_place_real
 	pick_and_place_perception
+	pick_and_place_perception_real
     DESTINATION lib/${PROJECT_NAME}
 )
 

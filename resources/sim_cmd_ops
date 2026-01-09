@@ -1,0 +1,91 @@
+user:~$ ros2 control list_controllers
+gripper_controller  [position_controllers/GripperActionController] active
+joint_state_broadcaster[joint_state_broadcaster/JointStateBroadcaster] active
+joint_trajectory_controller[joint_trajectory_controller/JointTrajectoryController] active
+
+user:~$ ros2 node list
+/controller_manager
+/gazebo
+/gazebo_ros2_control
+/gripper_controller
+/joint_state_broadcaster
+/joint_trajectory_controller
+/move_group
+/move_group_private_94341800867936
+/moveit_simple_controller_manager
+/robot_state_publisher
+/transform_listener_impl_55cda98b1750
+/wrist_rgbd_controller
+
+user:~$ ros2 node info /gripper_controller
+/gripper_controller
+  Subscribers:
+    /clock: rosgraph_msgs/msg/Clock
+    /parameter_events: rcl_interfaces/msg/ParameterEvent
+  Publishers:
+    /gripper_controller/transition_event: lifecycle_msgs/msg/TransitionEvent
+    /parameter_events: rcl_interfaces/msg/ParameterEvent
+    /rosout: rcl_interfaces/msg/Log
+  Service Servers:
+    /gripper_controller/describe_parameters: rcl_interfaces/srv/DescribeParameters
+    /gripper_controller/get_parameter_types: rcl_interfaces/srv/GetParameterTypes
+    /gripper_controller/get_parameters: rcl_interfaces/srv/GetParameters
+    /gripper_controller/list_parameters: rcl_interfaces/srv/ListParameters
+    /gripper_controller/set_parameters: rcl_interfaces/srv/SetParameters
+    /gripper_controller/set_parameters_atomically: rcl_interfaces/srv/SetParametersAtomically
+  Service Clients:
+
+  Action Servers:
+    /gripper_controller/gripper_cmd: control_msgs/action/GripperCommand
+  Action Clients:
+
+user:~$ ros2 topic list
+/attached_collision_object
+/clock
+/collision_object
+/display_contacts
+/display_planned_path
+/dynamic_joint_states
+/gripper_controller/transition_event
+/joint_state_broadcaster/transition_event
+/joint_states
+/joint_trajectory_controller/controller_state
+/joint_trajectory_controller/joint_trajectory
+/joint_trajectory_controller/state
+/joint_trajectory_controller/transition_event
+/monitored_planning_scene
+/motion_plan_request
+/parameter_events
+/performance_metrics
+/planning_scene
+/planning_scene_world
+/robot_description
+/robot_description_semantic
+/rosout
+/tf
+/tf_static
+/trajectory_execution_event
+/wrist_rgbd_depth_sensor/camera_info
+/wrist_rgbd_depth_sensor/depth/camera_info
+/wrist_rgbd_depth_sensor/depth/image_raw
+/wrist_rgbd_depth_sensor/depth/image_raw/compressed
+/wrist_rgbd_depth_sensor/depth/image_raw/compressedDepth
+/wrist_rgbd_depth_sensor/depth/image_raw/theora
+/wrist_rgbd_depth_sensor/image_raw
+/wrist_rgbd_depth_sensor/image_raw/compressed
+/wrist_rgbd_depth_sensor/image_raw/compressedDepth
+/wrist_rgbd_depth_sensor/image_raw/theora
+/wrist_rgbd_depth_sensor/points
+
+user:~$ ros2 action list
+/execute_trajectory
+/gripper_controller/gripper_cmd
+/joint_trajectory_controller/follow_joint_trajectory
+/move_action
+
+user:~$ ros2 action  info /gripper_controller/gripper_cmd
+Action: /gripper_controller/gripper_cmd
+Action clients: 1
+    /moveit_simple_controller_manager
+Action servers: 1
+    /gripper_controller
