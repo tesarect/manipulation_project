@@ -221,7 +221,8 @@ class ObjectDetection(Node):
 
         # Check if any clusters have been extracted
         if not bench_clusters:
-            self.get_logger().warning(f"No {cluster_type} clusters extracted...")
+            # self.get_logger().warning(f"No {cluster_type} clusters extracted...")
+            self.get_logger().error(f"No {cluster_type} clusters extracted...")
 
         # Return the filtered bench clusters, centroids and cluster dimensions
         return bench_clusters, cluster_centroids, cluster_dimensions

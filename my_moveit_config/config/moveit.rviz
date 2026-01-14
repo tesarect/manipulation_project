@@ -438,7 +438,7 @@ Visualization Manager:
       Enabled: true
       Name: Bench Marker
       Namespaces:
-        "": true
+        {}
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -450,7 +450,7 @@ Visualization Manager:
       Enabled: true
       Name: Object Marker
       Namespaces:
-        "": true
+        {}
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -585,10 +585,10 @@ Visualization Manager:
                                     {}
                           ft_frame:
                             {}
-            wrist_rgbd_camera_depth_optical_frame:
-              {}
             wrist_rgbd_camera_link:
               wrist_rgbd_camera_depth_frame:
+                wrist_rgbd_camera_depth_optical_frame:
+                  {}
                 wrist_rgbd_camera_fisheye_frame:
                   wrist_rgbd_camera_fisheye_optical_frame:
                     {}
@@ -618,16 +618,16 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 0.6423919200897217
+      Distance: 1.590538740158081
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.3605997562408447
-        Y: -0.05764930322766304
-        Z: -0.02621624246239662
+        X: 0.23370607197284698
+        Y: 0.03965313360095024
+        Z: 0.36781322956085205
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false

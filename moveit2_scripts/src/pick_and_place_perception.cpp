@@ -31,9 +31,6 @@ public:
     // auto-declare node_options parameters from overrides
     node_options.automatically_declare_parameters_from_overrides(true);
 
-    // initialize move_group node
-    // move_group_node_ =
-    //     rclcpp::Node::make_shared("move_group_node", node_options);
     move_group_node_ =
         rclcpp::Node::make_shared("pick_and_place_node", node_options);
 
@@ -245,17 +242,25 @@ public:
   void execute_trajectory_plan() {
     RCLCPP_INFO(LOGGER, "Planning and Executing Pick And Place Trajectory...");
 
-    // RCLCPP_INFO(LOGGER, "-- Going to Home Position...");
-    // rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
-    // // setup the joint value target
-    // RCLCPP_INFO(LOGGER, "Preparing Joint Value Trajectory...");
-    // setup_joint_value_target(+0.0000, -2.3562, +1.5708, -1.5708, -1.5708,
-    //                          +0.0000);
-    // // plan and execute the trajectory
-    // RCLCPP_INFO(LOGGER, "Planning Joint Value Trajectory...");
-    // plan_trajectory_kinematics();
-    // RCLCPP_INFO(LOGGER, "Executing Joint Value Trajectory...");
-    // execute_trajectory_kinematics();
+    RCLCPP_INFO(LOGGER, "-- Going to Home Position...");
+    rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
+    // setup the joint value target
+    RCLCPP_INFO(LOGGER, "Preparing Joint Value Trajectory...");
+    setup_joint_value_target(+0.0000, -2.3562, +1.5708, -1.5708, -1.5708,
+                             +0.0000);
+    // setup_goal_pose_target(0.104, 0.131, 0.470, 0.653, -0.653, 0.271,
+    // -0.271);
+    // plan and execute the trajectory
+    RCLCPP_INFO(LOGGER, "Planning Joint Value Trajectory...");
+    plan_trajectory_kinematics();
+    RCLCPP_INFO(LOGGER, "Executing Joint Value Trajectory...");
+    execute_trajectory_kinematics();
+
+    auto joints = move_group_robot_->getCurrentJointValues();
+    // ✎ Home pos Joints: [-0.0000, -2.3563, 1.5708, -1.5707, -1.5707, -0.0001]
+    RCLCPP_INFO(
+        LOGGER, "✎ Home pos Joints: [%.4f, %.4f, %.4f, %.4f, %.4f, %.4f]",
+        joints[0], joints[1], joints[2], joints[3], joints[4], joints[5]);
 
     // Wait for object detection
 
@@ -299,17 +304,27 @@ public:
     // setup the goal pose target
     RCLCPP_INFO(LOGGER, "Preparing Goal Pose Trajectory...");
 
-    setup_goal_pose_target(pregrasp_x, pregrasp_y, pregrasp_z, -1.000, +0.000,
-                           +0.000, +0.000);
+    setup_joint_value_target(-0.4544, -1.5023, 1.5699, -1.6383, -1.5715,
+                             -2.0256);
+    // setup_goal_pose_target(pregrasp_x, pregrasp_y, pregrasp_z, -1.000,
+    // +0.000,
+    //                        +0.000, +0.000);
 
-    RCLCPP_INFO(LOGGER, " >>>> %f, %f, %f", pregrasp_x, pregrasp_y, pregrasp_z);
-    RCLCPP_INFO(LOGGER, " >>>> 0.340, -0.020, 0.264");
+    // RCLCPP_INFO(LOGGER, " >>>> %f, %f, %f", pregrasp_x, pregrasp_y,
+    // pregrasp_z); RCLCPP_INFO(LOGGER, " >>>> 0.340, -0.020, 0.264");
 
     // plan and execute the trajectory
     RCLCPP_INFO(LOGGER, "Planning Goal Pose Trajectory...");
     plan_trajectory_kinematics();
     RCLCPP_INFO(LOGGER, "Executing Goal Pose Trajectory...");
     execute_trajectory_kinematics();
+
+    joints = move_group_robot_->getCurrentJointValues();
+    // ✎ PreGrsp pos Joints: [-0.4544, -1.5023, 1.5699, -1.6383, -1.5715,
+    // -2.0256]
+    RCLCPP_INFO(
+        LOGGER, "✎ PreGrsp pos Joints: [%.4f, %.4f, %.4f, %.4f, %.4f, %.4f]",
+        joints[0], joints[1], joints[2], joints[3], joints[4], joints[5]);
 
     // open the gripper
     RCLCPP_INFO(LOGGER, "-- Opening Gripper...");
@@ -350,14 +365,15 @@ public:
     // for (double i = 0.50; i <= 0.6525; i += 0.030) {
     // for (double i = 0.60; i <= 0.652; i += 0.013) {
     // for (double i = 0.60; i <= 0.646; i += 0.0092) {
-    for (double i = 0.60; i <= 0.6455; i += 0.0091) {
-    // for (double i = 0.60; i <= 0.645; i += 0.009) {
+    for (double i = 0.60; i <= 0.6480; i += 0.0096) {
+      // for (double i = 0.60; i <= 0.6455; i += 0.0091) { -----
+      // for (double i = 0.60; i <= 0.645; i += 0.009) {
       // for (double i = 0.60; i <= 0.638; i += 0.0065) {
       // for (double i = 0.60; i <= 0.635; i += 0.012) {
       setup_joint_value_gripper(i);
       plan_trajectory_gripper();
       execute_trajectory_gripper();
-    //   rclcpp::sleep_for(std::chrono::milliseconds(850));
+      //   rclcpp::sleep_for(std::chrono::milliseconds(850));
       rclcpp::sleep_for(std::chrono::milliseconds(500));
     }
     RCLCPP_INFO(LOGGER, "Gripper Closed");
@@ -376,6 +392,13 @@ public:
     RCLCPP_INFO(LOGGER, "Executing Cartesian Trajectory...");
     execute_trajectory_cartesian();
 
+    joints = move_group_robot_->getCurrentJointValues();
+    // ✎ retreated pos Joints: [-0.4544, -1.1809, 0.3071, -0.6964, -1.5716,
+    // -2.0256]
+    RCLCPP_INFO(
+        LOGGER, "✎ retreated pos Joints: [%.4f, %.4f, %.4f, %.4f, %.4f, %.4f]",
+        joints[0], joints[1], joints[2], joints[3], joints[4], joints[5]);
+
     RCLCPP_INFO(LOGGER, "-- Going to Place Position...");
     //   rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     // get current state of robot
@@ -384,16 +407,25 @@ public:
                                                   joint_group_positions_robot_);
     // setup the joint value target
     RCLCPP_INFO(LOGGER, "-- Preparing Joint Value Trajectory...");
-    //   rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     setup_joint_value_target(
         +3.1416, joint_group_positions_robot_[1],
         joint_group_positions_robot_[2], joint_group_positions_robot_[3],
         joint_group_positions_robot_[4], joint_group_positions_robot_[5]);
+    // setup_goal_pose_target(-0.315, -0.131, 0.448, -0.225, 0.974, 0.000,
+    // 0.001);
     RCLCPP_INFO(LOGGER, "-- Planning Joint Value Trajectory...");
     //   rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     plan_trajectory_kinematics();
     RCLCPP_INFO(LOGGER, "Executing Joint Value Trajectory...");
     execute_trajectory_kinematics();
+
+    joints = move_group_robot_->getCurrentJointValues();
+    // ✎ Drop pos Joints: [3.1415, -1.1809, 0.3071, -0.6963, -1.5717, -2.0256]
+    RCLCPP_INFO(
+        LOGGER, "✎ Drop pos Joints: [%.4f, %.4f, %.4f, %.4f, %.4f, %.4f]",
+        joints[0], joints[1], joints[2], joints[3], joints[4], joints[5]);
+
+    rclcpp::sleep_for(std::chrono::milliseconds(5000));
 
     // open the gripper
     RCLCPP_INFO(LOGGER, "-- Opening Gripper...");
@@ -412,13 +444,24 @@ public:
     // wait for few seconds
     //   std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
-    RCLCPP_INFO(LOGGER, "-- Going to Home Position...");
+    RCLCPP_INFO(LOGGER, "-- Going Back to Home Position...");
     rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     // setup the joint value target
     RCLCPP_INFO(LOGGER, "Preparing Joint Value Trajectory...");
+    // ✎ back2Home pos Joints: [3.1415, -1.1809, 0.3071, -0.6963, -1.5717,
+    // -2.0256] setup_joint_value_target(3.1415, -1.1809, 0.3071, -0.6963,
+    // -1.5717, -2.0256);
     setup_joint_value_target(+0.0000, -2.3562, +1.5708, -1.5708, -1.5708,
                              +0.0000);
+    // setup_goal_pose_target(0.104, 0.131, 0.470, 0.653, -0.653, 0.271,
+    // -0.271);
+
     // plan and execute the trajectory
+    joints = move_group_robot_->getCurrentJointValues();
+    RCLCPP_INFO(
+        LOGGER, "✎ back2Home pos Joints: [%.4f, %.4f, %.4f, %.4f, %.4f, %.4f]",
+        joints[0], joints[1], joints[2], joints[3], joints[4], joints[5]);
+
     RCLCPP_INFO(LOGGER, "Planning Joint Value Trajectory...");
     plan_trajectory_kinematics();
     RCLCPP_INFO(LOGGER, "Executing Joint Value Trajectory...");

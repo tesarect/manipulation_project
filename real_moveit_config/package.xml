@@ -44,7 +44,7 @@
   <exec_depend>ur_description</exec_depend>
   <exec_depend>warehouse_ros_mongo</exec_depend>
 
-
+  <!-- <depend>object_detection</depend> -->
   <exec_depend>sim_real_config</exec_depend>
   
   <export>

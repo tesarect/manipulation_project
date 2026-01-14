@@ -10,6 +10,9 @@ source ~/ros2_ws/install/setup.bash && ros2 launch real_moveit_config move_group
 source ~/ros2_ws/install/setup.bash && ros2 launch object_detection object_detection.launch.py
 source ~/ros2_ws/install/setup.bash && ros2 launch object_detection object_detection_real.launch.py
 
+ros2 launch my_moveit_config moveit_rviz.launch.py
+ros2 launch real_moveit_config moveit_rviz.launch.py
+
 source ~/ros2_ws/install/setup.bash && ros2 launch moveit2_scripts pick_and_place_perception.launch.py
 source ~/ros2_ws/install/setup.bash && ros2 launch moveit2_scripts pick_and_place_perception_real.launch.py
 source ~/ros2_ws/install/setup.bash && ros2 launch moveit2_scripts pick_and_place_perception.launch.py > output.log 2>&1   
@@ -21,6 +24,12 @@ cd ~/ros2_ws && colcon build --packages-select moveit2_scripts object_detection 
 
 ros2 run rqt_console rqt_console
 ros2 run tf2_tools view_frames
+
+ros2 bag record /object_detected /surface_detected /object_markers /bench_markers -o sim_block
+ros2 bag record /object_detected /surface_detected /object_markers /bench_markers -o real_block
+
+ros2 bag play sim_block --loop
+ros2 bag play real_block --loop
 
 cd ~/ros2_ws/src/zenoh-pointcloud/
 ./install_zenoh.sh
@@ -47,6 +56,152 @@ At time 0.0
  -0.000 -0.866 -0.500  0.100
   0.000  0.000  0.000  1.000
 ^C[INFO] [1767253070.407655558] [rclcpp]: signal_handler(signum=2)
+
+user:~$ ros2 run tf2_ros tf2_echo base_link tool0 (@ Home pos)
+[INFO] [1768276852.784948013] [tf2_echo]: Waiting for transform base_link ->  tool0: Invalid frame ID "base_link" passed to canTransform argument target_frame - frame does not exist
+At time 309.135000000
+- Translation: [0.104, 0.131, 0.470]
+- Rotation: in Quaternion [0.653, -0.653, 0.271, -0.271]
+- Rotation: in RPY (radian) [-2.356, -0.000, -1.571]
+- Rotation: in RPY (degree) [-134.994, -0.001, -89.991]
+- Matrix:
+  0.000 -0.707  0.707  0.104
+ -1.000 -0.000  0.000  0.131
+  0.000 -0.707 -0.707  0.470
+  0.000  0.000  0.000  1.000
+
+user:~/ros2_ws$ ros2 run tf2_ros tf2_echo base_link tool0 (@ Drop pose)
+[INFO] [1768280123.300149752] [tf2_echo]: Waiting for transform base_link ->  tool0: Invalid frame ID "base_link" passed to canTransform argument target_frame - frame does not exist
+At time 134.450000000
+- Translation: [-0.315, -0.131, 0.448]
+- Rotation: in Quaternion [-0.225, 0.974, 0.000, 0.001]
+- Rotation: in RPY (radian) [3.141, 0.001, -2.688]
+- Rotation: in RPY (degree) [179.984, 0.064, -153.986]
+- Matrix:
+ -0.899 -0.439  0.001 -0.315
+ -0.439  0.899  0.001 -0.131
+ -0.001  0.000 -1.000  0.448
+  0.000  0.000  0.000  1.000
+At time 135.290000000
+- Translation: [-0.315, -0.131, 0.448]
+- Rotation: in Quaternion [-0.225, 0.974, 0.000, 0.001]
+- Rotation: in RPY (radian) [3.141, 0.001, -2.688]
+- Rotation: in RPY (degree) [179.984, 0.064, -153.986]
+- Matrix:
+ -0.899 -0.439  0.001 -0.315
+ -0.439  0.899  0.001 -0.131
+ -0.001  0.000 -1.000  0.448
+  0.000  0.000  0.000  1.000
+At time 136.120000000
+- Translation: [-0.315, -0.131, 0.448]
+- Rotation: in Quaternion [-0.225, 0.974, 0.000, 0.001]
+- Rotation: in RPY (radian) [3.141, 0.001, -2.688]
+- Rotation: in RPY (degree) [179.984, 0.064, -153.986]
+- Matrix:
+ -0.899 -0.439  0.001 -0.315
+ -0.439  0.899  0.001 -0.131
+ -0.001  0.000 -1.000  0.448
+  0.000  0.000  0.000  1.000
+At time 136.870000000
+- Translation: [-0.315, -0.131, 0.448]
+- Rotation: in Quaternion [-0.225, 0.974, 0.000, 0.001]
+- Rotation: in RPY (radian) [3.141, 0.001, -2.688]
+- Rotation: in RPY (degree) [179.984, 0.064, -153.986]
+- Matrix:
+ -0.899 -0.439  0.001 -0.315
+ -0.439  0.899  0.001 -0.131
+ -0.001  0.000 -1.000  0.448
+  0.000  0.000  0.000  1.000
+At time 137.670000000
+- Translation: [-0.315, -0.131, 0.448]
+- Rotation: in Quaternion [-0.225, 0.974, 0.000, 0.001]
+- Rotation: in RPY (radian) [3.141, 0.001, -2.688]
+- Rotation: in RPY (degree) [179.984, 0.064, -153.986]
+- Matrix:
+ -0.899 -0.439  0.001 -0.315
+ -0.439  0.899  0.001 -0.131
+ -0.001  0.000 -1.000  0.448
+  0.000  0.000  0.000  1.000
+At time 138.470000000
+- Translation: [-0.316, -0.127, 0.449]
+- Rotation: in Quaternion [-0.218, 0.976, 0.000, -0.000]
+- Rotation: in RPY (radian) [3.141, -0.001, -2.703]
+- Rotation: in RPY (degree) [179.991, -0.032, -154.853]
+- Matrix:
+ -0.905 -0.425 -0.001 -0.316
+ -0.425  0.905 -0.000 -0.127
+  0.001  0.000 -1.000  0.449
+  0.000  0.000  0.000  1.000
+At time 139.310000000
+- Translation: [-0.319, -0.047, 0.464]
+- Rotation: in Quaternion [-0.025, 0.999, -0.006, -0.029]
+- Rotation: in RPY (radian) [-3.131, -0.059, -3.091]
+- Rotation: in RPY (degree) [-179.392, -3.388, -177.108]
+- Matrix:
+ -0.997 -0.051 -0.058 -0.319
+ -0.050  0.999 -0.014 -0.047
+  0.059 -0.011 -0.998  0.464
+  0.000  0.000  0.000  1.000
+At time 140.70000000
+- Translation: [-0.305, 0.018, 0.475]
+- Rotation: in Quaternion [0.144, 0.988, -0.008, -0.055]
+- Rotation: in RPY (radian) [-3.111, -0.107, 2.851]
+- Rotation: in RPY (degree) [-178.220, -6.156, 163.358]
+- Matrix:
+ -0.953  0.283 -0.112 -0.305
+  0.285  0.959  0.001  0.018
+  0.107 -0.031 -0.994  0.475
+  0.000  0.000  0.000  1.000
+^C[INFO] [1768280131.720915127] [rclcpp]: signal_handler(signum=2)
+
+
+- [-0.315, -0.131, 0.448, -0.225, 0.974, 0.000, 0.001]
+- [-0.315, -0.131, 0.448, -0.225, 0.974, 0.000, 0.001]
+- [-0.315, -0.131, 0.448, -0.225, 0.974, 0.000, 0.001]
+- [-0.315, -0.131, 0.448, -0.225, 0.974, 0.000, 0.001]
+- [-0.315, -0.131, 0.448, -0.225, 0.974, 0.000, 0.001]
+^Cuser:~$ ros2 topic  echo /joint_states --once
+A message was lost!!!
+        total count change:1
+        total count: 1---
+header:
+  stamp:
+    sec: 518
+    nanosec: 590000000
+  frame_id: ''
+name:
+- shoulder_pan_joint
+- shoulder_lift_joint
+- elbow_joint
+- wrist_2_joint
+- wrist_3_joint
+- wrist_1_joint
+- robotiq_85_left_knuckle_joint
+position:
+- 4.103291516344143e-05
+- -2.3561922401093183
+- 1.5707999674372655
+- -1.5707405580857916
+- 1.582737657823685e-05
+- -1.5707902448877995
+- 9.174434997749614e-05
+velocity:
+- -0.011561667850898728
+- -0.03553612379314774
+- 0.06687765385670603
+- 0.011523999910961077
+- -0.008174539127571087
+- -0.037966507798281854
+- 0.000932774633841278
+effort:
+- .nan
+- .nan
+- .nan
+- .nan
+- .nan
+- .nan
+- .nan
+---
 
 user:~$ ros2 topic echo /object_detected
 object_id: 0
