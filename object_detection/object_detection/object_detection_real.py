@@ -26,78 +26,24 @@ class ObjectDetection(Node):
 
     def callback(self, msg: PointCloud2) -> None:
 
-        # try:
-        #     # Convert PointCloud2 msg to pcl point cloud
-        #     cloud = self.from_ros_msg(msg)
-
-        #     # Filtered cloud for surface detection
-        #     filtered_cloud_plane = self.filter_cloud(cloud, max_x_dist=2.15, min_height=-0.09, max_height=0.0)
-        #     # filtered_cloud_plane = self.filter_cloud(cloud, max_x_dist=2.15, max_y_dist=0.5, min_height=-0.09, max_height=0.0)
-        #     # Filtered cloud for object detection
-        #     filtered_cloud_objects = self.filter_cloud(cloud, max_x_dist=2.15, min_height=0.0, max_height=1.2)
-        #     # filtered_cloud_objects = self.filter_cloud(cloud, max_x_dist=2.15, max_y_dist=0.5, min_height=0.0, max_height=1.2)
-
-        #     # Segmentation: Plane extraction
-        #     plane_indices, plane_coefficients, plane_cloud = self.extract_plane(filtered_cloud_plane)
-
-        #     # Clustering: Identify clusters corresponding to benches surfaces
-        #     bench_clusters, surface_centroids, surface_dimensions = self.extract_clusters(plane_cloud, "Bench Surface")
-        #     # Clustering: Identify clusters corresponding to objects placed on top of benches
-        #     object_clusters, object_centroids, object_dimensions = self.extract_clusters(filtered_cloud_objects, "Object")
-
-        #     # Publish the detected bench surface clusters as markers
-        #     self.pub_surface_marker(surface_centroids, surface_dimensions)
-        #     # Publish the detected object clusters as markers
-        #     self.pub_object_marker(object_centroids, object_dimensions)
-
-        #     # Publish detected surface information
-        #     self.pub_surface_detected(surface_centroids, surface_dimensions)
-        #     # Publish detected object information
-        #     self.pub_object_detected(object_centroids, object_dimensions)
-
-        # except (TransformException, ConnectivityException) as e:
-        #     self.get_logger().error(f"Transform lookup failed: {e}")
-        # except Exception as e:
-        #     self.get_logger().error(f"Error in callback: {e}")
         try:
             # Convert PointCloud2 msg to pcl point cloud
             cloud = self.from_ros_msg(msg)
-            
-            # Check if conversion succeeded
-            if cloud is None:
-                self.get_logger().error("Failed to convert PointCloud2 to PCL - skipping frame")
-                return
-            
-            self.get_logger().debug(f"Point cloud converted: {cloud.size} points")
 
             # Filtered cloud for surface detection
             filtered_cloud_plane = self.filter_cloud(cloud, max_x_dist=2.15, min_height=-0.09, max_height=0.0)
-            if filtered_cloud_plane is None:
-                self.get_logger().warn("Surface filter returned None")
-                return
-            self.get_logger().debug(f"Surface filter: {filtered_cloud_plane.size} points")
-            
+            # filtered_cloud_plane = self.filter_cloud(cloud, max_x_dist=2.15, max_y_dist=0.5, min_height=-0.09, max_height=0.0)
             # Filtered cloud for object detection
             filtered_cloud_objects = self.filter_cloud(cloud, max_x_dist=2.15, min_height=0.0, max_height=1.2)
-            if filtered_cloud_objects is None:
-                self.get_logger().warn("Object filter returned None")
-                return
-            self.get_logger().debug(f"Object filter: {filtered_cloud_objects.size} points")
+            # filtered_cloud_objects = self.filter_cloud(cloud, max_x_dist=2.15, max_y_dist=0.5, min_height=0.0, max_height=1.2)
 
             # Segmentation: Plane extraction
             plane_indices, plane_coefficients, plane_cloud = self.extract_plane(filtered_cloud_plane)
-            if plane_cloud is None:
-                self.get_logger().warn("Plane extraction failed")
-                return
-            self.get_logger().debug(f"Plane extracted: {len(plane_indices)} inliers")
 
             # Clustering: Identify clusters corresponding to benches surfaces
             bench_clusters, surface_centroids, surface_dimensions = self.extract_clusters(plane_cloud, "Bench Surface")
-            self.get_logger().debug(f"Found {len(surface_centroids)} surfaces")
-            
             # Clustering: Identify clusters corresponding to objects placed on top of benches
             object_clusters, object_centroids, object_dimensions = self.extract_clusters(filtered_cloud_objects, "Object")
-            self.get_logger().debug(f"Found {len(object_centroids)} objects")
 
             # Publish the detected bench surface clusters as markers
             self.pub_surface_marker(surface_centroids, surface_dimensions)
@@ -113,8 +59,62 @@ class ObjectDetection(Node):
             self.get_logger().error(f"Transform lookup failed: {e}")
         except Exception as e:
             self.get_logger().error(f"Error in callback: {e}")
-            import traceback
-            self.get_logger().error(traceback.format_exc())
+        # try:
+        #     # Convert PointCloud2 msg to pcl point cloud
+        #     cloud = self.from_ros_msg(msg)
+            
+        #     # Check if conversion succeeded
+        #     if cloud is None:
+        #         self.get_logger().error("Failed to convert PointCloud2 to PCL - skipping frame")
+        #         return
+            
+        #     self.get_logger().debug(f"Point cloud converted: {cloud.size} points")
+
+        #     # Filtered cloud for surface detection
+        #     filtered_cloud_plane = self.filter_cloud(cloud, max_x_dist=2.15, min_height=-0.09, max_height=0.0)
+        #     if filtered_cloud_plane is None:
+        #         self.get_logger().warn("Surface filter returned None")
+        #         return
+        #     self.get_logger().debug(f"Surface filter: {filtered_cloud_plane.size} points")
+            
+        #     # Filtered cloud for object detection
+        #     filtered_cloud_objects = self.filter_cloud(cloud, max_x_dist=2.15, min_height=0.0, max_height=1.2)
+        #     if filtered_cloud_objects is None:
+        #         self.get_logger().warn("Object filter returned None")
+        #         return
+        #     self.get_logger().debug(f"Object filter: {filtered_cloud_objects.size} points")
+
+        #     # Segmentation: Plane extraction
+        #     plane_indices, plane_coefficients, plane_cloud = self.extract_plane(filtered_cloud_plane)
+        #     if plane_cloud is None:
+        #         self.get_logger().warn("Plane extraction failed")
+        #         return
+        #     self.get_logger().debug(f"Plane extracted: {len(plane_indices)} inliers")
+
+        #     # Clustering: Identify clusters corresponding to benches surfaces
+        #     bench_clusters, surface_centroids, surface_dimensions = self.extract_clusters(plane_cloud, "Bench Surface")
+        #     self.get_logger().debug(f"Found {len(surface_centroids)} surfaces")
+            
+        #     # Clustering: Identify clusters corresponding to objects placed on top of benches
+        #     object_clusters, object_centroids, object_dimensions = self.extract_clusters(filtered_cloud_objects, "Object")
+        #     self.get_logger().debug(f"Found {len(object_centroids)} objects")
+
+        #     # Publish the detected bench surface clusters as markers
+        #     self.pub_surface_marker(surface_centroids, surface_dimensions)
+        #     # Publish the detected object clusters as markers
+        #     self.pub_object_marker(object_centroids, object_dimensions)
+
+        #     # Publish detected surface information
+        #     self.pub_surface_detected(surface_centroids, surface_dimensions)
+        #     # Publish detected object information
+        #     self.pub_object_detected(object_centroids, object_dimensions)
+
+        # except (TransformException, ConnectivityException) as e:
+        #     self.get_logger().error(f"Transform lookup failed: {e}")
+        # except Exception as e:
+        #     self.get_logger().error(f"Error in callback: {e}")
+        #     import traceback
+        #     self.get_logger().error(traceback.format_exc())
                 
 
     def from_ros_msg(self, msg: PointCloud2) -> Union[pcl.PointCloud, None]:
@@ -177,7 +177,6 @@ class ObjectDetection(Node):
                                     [2*x*z - 2*y*w, 2*y*z + 2*x*w, 1 - 2*x**2 - 2*y**2]])
         return rotation_matrix
 
-    # def filter_cloud(self, cloud: pcl.PointCloud, max_x_dist: float, max_y_dist: float, min_height: float, max_height: float) -> Union[pcl.PointCloud, None]:
     def filter_cloud(self, cloud: pcl.PointCloud, max_x_dist: float, min_height: float, max_height: float) -> Union[pcl.PointCloud, None]:
         """Filter cloud"""
         try:
@@ -206,8 +205,8 @@ class ObjectDetection(Node):
         # Extract points belonging to the plane
         plane_cloud = cloud.extract(indices)
 
-        # self.get_logger().info(f"Number of inliers: {len(indices)}")
-        # self.get_logger().info(f"Plane coefficients: {coefficients}")
+        self.get_logger().info(f"Number of inliers: {len(indices)}")
+        self.get_logger().info(f"Plane coefficients: {coefficients}")
         return indices, coefficients, plane_cloud
 
     def extract_clusters(self, cloud: pcl.PointCloud, cluster_type: str) -> Tuple[List[pcl.PointCloud], List[List[float]], List[List[float]]]:
@@ -270,10 +269,10 @@ class ObjectDetection(Node):
             cluster_dimensions.append(dimensions.tolist())
 
             # Log cluster information
-            # num_points = len(indices)
-            # self.get_logger().info(f"{cluster_type} cluster {idx + 1} has {num_points} points.")
-            # self.get_logger().info(f"Centroid of {cluster_type} cluster {idx + 1}: {centroid}")
-            # self.get_logger().info(f"Dimensions of {cluster_type} cluster {idx + 1}: {dimensions}")
+            num_points = len(indices)
+            self.get_logger().info(f"{cluster_type} cluster {idx + 1} has {num_points} points.")
+            self.get_logger().info(f"Centroid of {cluster_type} cluster {idx + 1}: {centroid}")
+            self.get_logger().info(f"Dimensions of {cluster_type} cluster {idx + 1}: {dimensions}")
 
         # Check if any clusters have been extracted
         if not bench_clusters:

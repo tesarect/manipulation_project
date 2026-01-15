@@ -15,7 +15,6 @@
 #include <vector>
 
 // program variables
-// static const rclcpp::Logger LOGGER = rclcpp::get_logger("move_group_node");
 static const rclcpp::Logger LOGGER =
     rclcpp::get_logger("pick_and_place_real_node");
 static const std::string PLANNING_GROUP_ROBOT = "ur_manipulator";
@@ -33,8 +32,6 @@ public:
     node_options.automatically_declare_parameters_from_overrides(true);
 
     // initialize move_group node
-    // move_group_node_ =
-    //     rclcpp::Node::make_shared("move_group_node", node_options);
     move_group_node_ =
         rclcpp::Node::make_shared("pick_and_place_real_node", node_options);
 
@@ -253,11 +250,6 @@ public:
     RCLCPP_INFO(LOGGER, "Preparing Joint Value Trajectory...");
     setup_joint_value_target(+0.0000, -2.3562, +1.5708, -1.5708, -1.5708,
                              +0.0000);
-    // setup_joint_value_target(+0.0000, -2.3562, +1.6000, -1.5708, -1.5708,
-    //                          +0.0000);
-    RCLCPP_INFO(LOGGER, " -------------- exec HOME POSE --------------");
-    RCLCPP_INFO(LOGGER,
-                " +0.0000, -2.3562, +1.5708, -1.5708, -1.5708, +0.0000");
     // plan and execute the trajectory
     RCLCPP_INFO(LOGGER, "Planning Joint Value Trajectory...");
     plan_trajectory_kinematics();
@@ -273,23 +265,14 @@ public:
       RCLCPP_ERROR(LOGGER, "Cannot proceed without object detection!");
       return;
     }
-
-    // Surface at [0.516, 0.258, -0.030], L=0.571, W=0.377
-    // Object detected at position: [0.346, 0.121, 0.022]
-    // Object dimensions: H=0.023, W=0.017, T=0.046
-
     // Get the detected object position (thread-safe)
     double obj_x, obj_y, obj_z, obj_thickness, obj_width, obj_height;
     {
       std::lock_guard<std::mutex> lock(object_mutex_);
-      // tolarance/ correction addition for simulation purpose
+      // tolarance/correction addition for simulation purpose
       obj_x = detected_object_x_ + 0.002;
-      //   obj_y = detected_object_y_;
-      //   obj_y = detected_object_y_ + 0.02;
       obj_y = detected_object_y_ + 0.01;
       obj_z = detected_object_z_ + 0.11;
-      //   obj_z = detected_object_z_ + 0.15;
-      //   obj_z = detected_object_z_;
       obj_thickness = detected_object_thickness_;
       obj_width = detected_object_width_;
       obj_height = detected_object_height_;
@@ -301,19 +284,12 @@ public:
     }
 
     // Calculate pregrasp position (above the object)
-    // double pregrasp_offset = 0.08; // 8cm above object center
-    // double pregrasp_offset = 0.25;
     double pregrasp_offset = 0.15;
     double pregrasp_x = obj_x + obj_height / 2.0;
     double pregrasp_y = obj_y - obj_width / 2.0;
     double pregrasp_z = obj_z + pregrasp_offset;
 
-    // Calculate grasp approach distance (move down to grasp)
-    // .15 - .126
-    // double approach_distance = -(pregrasp_offset - obj_thickness); //
-    // 0.106675 double approach_distance =
-    //     -(pregrasp_offset - (obj_thickness / 2.0)); // 0.128351
-    // need to try the above with obj_z alone instead of 'obj_thickness' XXXX
+    // grasp approach distance (move down to grasp)
     double approach_distance = -0.07;
 
     RCLCPP_INFO(LOGGER, "-- Going to Pregrasp Position...");
@@ -321,22 +297,8 @@ public:
     // setup the goal pose target
     RCLCPP_INFO(LOGGER, "Preparing Goal Pose Trajectory...");
 
-    // setup_goal_pose_target(pregrasp_x, pregrasp_y, pregrasp_z, -1.000,
-    // +0.000, +0.000, +0.000);
     setup_joint_value_target(-0.0158, -1.3467, 1.4188, -1.6424, -1.5710,
                              -1.5874);
-
-    RCLCPP_INFO(LOGGER, " -------------- Pre Grasp  (using joint value "
-                        "trajectory)--------------");
-    RCLCPP_INFO(LOGGER,
-                " Obtained >>>> %f, %f, %f, -1.000, +0.000, +0.000, +0.000",
-                pregrasp_x, pregrasp_y, pregrasp_z);
-
-    RCLCPP_INFO(
-        LOGGER,
-        " Original >>>> 0.375, 0.132, 0.262, -1.000, +0.000, +0.000, +0.000");
-
-    RCLCPP_INFO(LOGGER, " approach_dist  ----> %f", approach_distance);
 
     // plan and execute the trajectory
     RCLCPP_INFO(LOGGER, "Planning Goal Pose Trajectory...");
@@ -345,10 +307,10 @@ public:
     execute_trajectory_kinematics();
 
     auto joints = move_group_robot_->getCurrentJointValues();
-    // ✎ PreGrst pos Joints: [-0.0158, -1.3467, 1.4188, -1.6424, -1.5710,
+    //  PreGrst pos Joints: [-0.0158, -1.3467, 1.4188, -1.6424, -1.5710,
     // -1.5874]
     RCLCPP_INFO(
-        LOGGER, "✎ PreGrst pos Joints: [%.4f, %.4f, %.4f, %.4f, %.4f, %.4f]",
+        LOGGER, " PreGrst pos Joints: [%.4f, %.4f, %.4f, %.4f, %.4f, %.4f]",
         joints[0], joints[1], joints[2], joints[3], joints[4], joints[5]);
 
     // open the gripper
@@ -380,9 +342,6 @@ public:
     RCLCPP_INFO(LOGGER, "Executing Cartesian Trajectory...");
     execute_trajectory_cartesian();
 
-    // throw
-    // std::runtime_error("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-
     // close the gripper
     RCLCPP_INFO(LOGGER, "-- Closing Gripper...");
     // rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
@@ -402,10 +361,7 @@ public:
     // rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     // setup the cartesian target
     RCLCPP_INFO(LOGGER, "Preparing Cartesian Trajectory...");
-    // setup_waypoints_target(+0.000, +0.000, +0.060);
-    // setup_waypoints_target(+0.000, +0.000, pregrasp_z + 0.080);
     setup_waypoints_target(+0.000, +0.000, pregrasp_z + 0.060);
-    // setup_waypoints_target(+0.000, +0.000, pregrasp_z + 0.070);
     // plan and execute the trajectory
     RCLCPP_INFO(LOGGER, "Planning Cartesian Trajectory...");
     plan_trajectory_cartesian();
@@ -454,8 +410,6 @@ public:
     RCLCPP_INFO(LOGGER, "Preparing Joint Value Trajectory...");
     setup_joint_value_target(+0.0000, -2.3562, +1.5708, -1.5708, -1.5708,
                              +0.0000);
-    // setup_joint_value_target(+0.0000, -2.3562, +1.6000, -1.5708, -1.5708,
-    //                          +0.0000);
     // plan and execute the trajectory
     RCLCPP_INFO(LOGGER, "Planning Joint Value Trajectory...");
     plan_trajectory_kinematics();

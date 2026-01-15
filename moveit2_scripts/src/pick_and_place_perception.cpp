@@ -248,8 +248,6 @@ public:
     RCLCPP_INFO(LOGGER, "Preparing Joint Value Trajectory...");
     setup_joint_value_target(+0.0000, -2.3562, +1.5708, -1.5708, -1.5708,
                              +0.0000);
-    // setup_goal_pose_target(0.104, 0.131, 0.470, 0.653, -0.653, 0.271,
-    // -0.271);
     // plan and execute the trajectory
     RCLCPP_INFO(LOGGER, "Planning Joint Value Trajectory...");
     plan_trajectory_kinematics();
@@ -272,9 +270,6 @@ public:
       return;
     }
 
-    //  Object detected at position: [x: 0.328, y: -0.011, z: 0.028]
-    // Object dimensions: H=0.020, W=0.019, T=0.052
-
     // Get the detected object position (thread-safe)
     double obj_x, obj_y, obj_z, obj_thickness, obj_width, obj_height;
     {
@@ -282,17 +277,13 @@ public:
       // tolarance/ correction addition for simulation purpose
       obj_x = detected_object_x_ + 0.002;
       obj_y = detected_object_y_;
-      //   obj_z = detected_object_z_ + 0.11;
       obj_z = detected_object_z_ + 0.07;
-      //   obj_z = detected_object_z_ + 0.12;
       obj_thickness = detected_object_thickness_;
       obj_width = detected_object_width_;
       obj_height = detected_object_height_;
     }
 
     // Calculate pregrasp position (above the object)
-    // double pregrasp_offset = 0.08; // 8cm above object center
-    // double pregrasp_offset = 0.25;
     double pregrasp_offset = 0.15;
     double pregrasp_x = obj_x + obj_height / 2.0;
     double pregrasp_y = obj_y - obj_width / 2.0;
@@ -308,13 +299,6 @@ public:
 
     setup_joint_value_target(-0.4544, -1.5023, 1.5699, -1.6383, -1.5715,
                              -2.0256);
-    // setup_goal_pose_target(pregrasp_x, pregrasp_y, pregrasp_z, -1.000,
-    // +0.000,
-    //                        +0.000, +0.000);
-
-    // RCLCPP_INFO(LOGGER, " >>>> %f, %f, %f", pregrasp_x, pregrasp_y,
-    // pregrasp_z); RCLCPP_INFO(LOGGER, " >>>> 0.340, -0.020, 0.264");
-
     // plan and execute the trajectory
     RCLCPP_INFO(LOGGER, "Planning Goal Pose Trajectory...");
     plan_trajectory_kinematics();
@@ -354,9 +338,6 @@ public:
     RCLCPP_INFO(LOGGER, "Executing Cartesian Trajectory...");
     execute_trajectory_cartesian();
 
-    // throw
-    // std::runtime_error("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-
     // close the gripper
     RCLCPP_INFO(LOGGER, "-- Closing Gripper...");
     // rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
@@ -364,18 +345,7 @@ public:
     RCLCPP_INFO(LOGGER, "Preparing Gripper Value...");
     RCLCPP_INFO(LOGGER, "Planning Gripper Action...");
     RCLCPP_INFO(LOGGER, "Executing Gripper Action...");
-    // for (double i = 0.50; i <= 0.6527; i += 0.01054) {
-    // for (double i = 0.50; i <= 0.6525; i += 0.0105) {
-    // for (double i = 0.60; i <= 0.652; i += 0.013) {
-    // for (double i = 0.60; i <= 0.651; i += 0.0102) {
-    //   for (double i = 0.60; i <= 0.650; i += 0.01) {
-    // for (double i = 0.60; i <= 0.6488; i += 0.00976) {
-    // for (double i = 0.60; i <= 0.646; i += 0.0092) {
-    // for (double i = 0.60; i <= 0.6480; i += 0.0096) {
     for (double i = 0.60; i <= 0.6455; i += 0.0091) {
-      // for (double i = 0.60; i <= 0.645; i += 0.009) {
-      // for (double i = 0.60; i <= 0.638; i += 0.0065) {
-      // for (double i = 0.60; i <= 0.635; i += 0.012) {
       setup_joint_value_gripper(i);
       plan_trajectory_gripper();
       execute_trajectory_gripper();
@@ -417,8 +387,6 @@ public:
         +3.1416, joint_group_positions_robot_[1],
         joint_group_positions_robot_[2], joint_group_positions_robot_[3],
         joint_group_positions_robot_[4], joint_group_positions_robot_[5]);
-    // setup_goal_pose_target(-0.315, -0.131, 0.448, -0.225, 0.974, 0.000,
-    // 0.001);
     RCLCPP_INFO(LOGGER, "-- Planning Joint Value Trajectory...");
     //   rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     plan_trajectory_kinematics();
@@ -454,13 +422,8 @@ public:
     rclcpp::sleep_for(std::chrono::milliseconds(sleep2_));
     // setup the joint value target
     RCLCPP_INFO(LOGGER, "Preparing Joint Value Trajectory...");
-    // ✎ back2Home pos Joints: [3.1415, -1.1809, 0.3071, -0.6963, -1.5717,
-    // -2.0256] setup_joint_value_target(3.1415, -1.1809, 0.3071, -0.6963,
-    // -1.5717, -2.0256);
     setup_joint_value_target(+0.0000, -2.3562, +1.5708, -1.5708, -1.5708,
                              +0.0000);
-    // setup_goal_pose_target(0.104, 0.131, 0.470, 0.653, -0.653, 0.271,
-    // -0.271);
 
     // plan and execute the trajectory
     joints = move_group_robot_->getCurrentJointValues();
