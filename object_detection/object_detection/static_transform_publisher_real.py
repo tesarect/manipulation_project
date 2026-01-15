@@ -13,7 +13,6 @@ class StaticTransformPublisher(Node):
         self.broadcaster = tf2_ros.StaticTransformBroadcaster(self)
         
         self.parent_frame = 'base_link'
-        # self.child_frame = 'wrist_rgbd_camera_depth_optical_frame'
         self.child_frame = 'camera_link'
         
         # Wait and fetch transform

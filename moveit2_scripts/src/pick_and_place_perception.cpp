@@ -144,7 +144,7 @@ public:
   }
 
   // Wait for object detection with timeout
-  bool wait_for_object_detection(double timeout_seconds = 10.0) {
+  bool wait_for_object_detection(double timeout_seconds = 20.0) {
     RCLCPP_INFO(LOGGER, "Waiting for object detection...");
 
     auto start_time = std::chrono::steady_clock::now();
@@ -165,7 +165,7 @@ public:
     return true;
   }
 
-  bool wait_for_surface_detection(double timeout_sec = 10.0) {
+  bool wait_for_surface_detection(double timeout_sec = 20.0) {
     RCLCPP_INFO(LOGGER, "Waiting for surface detection...");
     auto start = std::chrono::steady_clock::now();
 
@@ -282,7 +282,9 @@ public:
       // tolarance/ correction addition for simulation purpose
       obj_x = detected_object_x_ + 0.002;
       obj_y = detected_object_y_;
-      obj_z = detected_object_z_ + 0.11;
+      //   obj_z = detected_object_z_ + 0.11;
+      obj_z = detected_object_z_ + 0.07;
+      //   obj_z = detected_object_z_ + 0.12;
       obj_thickness = detected_object_thickness_;
       obj_width = detected_object_width_;
       obj_height = detected_object_height_;
@@ -362,11 +364,15 @@ public:
     RCLCPP_INFO(LOGGER, "Preparing Gripper Value...");
     RCLCPP_INFO(LOGGER, "Planning Gripper Action...");
     RCLCPP_INFO(LOGGER, "Executing Gripper Action...");
-    // for (double i = 0.50; i <= 0.6525; i += 0.030) {
+    // for (double i = 0.50; i <= 0.6527; i += 0.01054) {
+    // for (double i = 0.50; i <= 0.6525; i += 0.0105) {
     // for (double i = 0.60; i <= 0.652; i += 0.013) {
+    // for (double i = 0.60; i <= 0.651; i += 0.0102) {
+    //   for (double i = 0.60; i <= 0.650; i += 0.01) {
+    // for (double i = 0.60; i <= 0.6488; i += 0.00976) {
     // for (double i = 0.60; i <= 0.646; i += 0.0092) {
-    for (double i = 0.60; i <= 0.6480; i += 0.0096) {
-      // for (double i = 0.60; i <= 0.6455; i += 0.0091) { -----
+    // for (double i = 0.60; i <= 0.6480; i += 0.0096) {
+    for (double i = 0.60; i <= 0.6455; i += 0.0091) {
       // for (double i = 0.60; i <= 0.645; i += 0.009) {
       // for (double i = 0.60; i <= 0.638; i += 0.0065) {
       // for (double i = 0.60; i <= 0.635; i += 0.012) {

@@ -10,8 +10,8 @@ source ~/ros2_ws/install/setup.bash && ros2 launch real_moveit_config move_group
 source ~/ros2_ws/install/setup.bash && ros2 launch object_detection object_detection.launch.py
 source ~/ros2_ws/install/setup.bash && ros2 launch object_detection object_detection_real.launch.py
 
-ros2 launch my_moveit_config moveit_rviz.launch.py
-ros2 launch real_moveit_config moveit_rviz.launch.py
+source ~/ros2_ws/install/setup.bash && ros2 launch my_moveit_config moveit_rviz.launch.py
+source ~/ros2_ws/install/setup.bash && ros2 launch real_moveit_config moveit_rviz.launch.py
 
 source ~/ros2_ws/install/setup.bash && ros2 launch moveit2_scripts pick_and_place_perception.launch.py
 source ~/ros2_ws/install/setup.bash && ros2 launch moveit2_scripts pick_and_place_perception_real.launch.py
@@ -28,8 +28,8 @@ ros2 run tf2_tools view_frames
 ros2 bag record /object_detected /surface_detected /object_markers /bench_markers -o sim_block
 ros2 bag record /object_detected /surface_detected /object_markers /bench_markers -o real_block
 
-ros2 bag play sim_block --loop
-ros2 bag play real_block --loop
+ros2 bag play ~/ros2_ws/src/manipulation_project/resources/rosbag/sim_block --loop
+ros2 bag play ~/ros2_ws/src/manipulation_project/resources/rosbag/real_block --loop
 
 cd ~/ros2_ws/src/zenoh-pointcloud/
 ./install_zenoh.sh

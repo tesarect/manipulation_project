@@ -22,7 +22,7 @@ def generate_launch_description():
             '0.338', '0.450', '0.100',              # translation (x, y, z)
             '0.000', '0.866', '-0.500', '0.000',    # quaternion (qx qy qz qw)
             'base_link',
-            'wrist_rgbd_camera_depth_optical_frame'
+            'camera_link'
         ])
     
     rviz =  Node(
